@@ -1,0 +1,23 @@
+{
+  "backend/main.mo": "Empty Motoko actor definition with no logic.",
+  "feature_evidence.json": "JSON report mapping high-level product features to related frontend files and components.",
+  "frontend-file-summaries.txt": "Text file containing prewritten summaries for various frontend source files and assets.",
+  "frontend/index.css": "Tailwind base stylesheet defining OKLCH color variables and global theme tokens for light and dark modes.",
+  "frontend/index.html": "Basic HTML entry point mounting the React app and loading main.tsx.",
+  "frontend/src/App.tsx": "Root React component rendering the hero header, guided chat flow container, and footer with social links.",
+  "frontend/src/config/pegasus.ts": "Configuration for categories, WhatsApp details, catalogue info, and company metadata, plus a WhatsApp link helper.",
+  "frontend/src/features/guided-flow/CategoryCards.tsx": "Interactive grid of category cards invoking a callback when a category is selected.",
+  "frontend/src/features/guided-flow/ChatMessageList.tsx": "Displays system and user messages with animated, styled chat bubbles.",
+  "frontend/src/features/guided-flow/CTAButtons.tsx": "Buttons for WhatsApp chat and catalogue download with premium-styled interactions.",
+  "frontend/src/features/guided-flow/GuidedFlow.tsx": "Main guided flow orchestrator rendering messages, quick replies, category cards, and CTAs based on step state.",
+  "frontend/src/features/guided-flow/QuickReplies.tsx": "Renders selectable quick reply buttons with optional descriptions for each choice.",
+  "frontend/src/features/guided-flow/types.ts": "TypeScript definitions for steps, messages, quick replies, answers, and guided flow state.",
+  "frontend/src/features/guided-flow/useGuidedFlow.ts": "Implements a multi-step guided flow with state management, message creation, answer handling, step navigation, and restart logic.",
+  "frontend/src/hooks/useActor.ts": "Creates and manages a backend actor instance based on Internet Identity, refreshing dependent queries when the actor changes.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Provides Internet Identity auth context, loading identities, handling login/logout, and exposing authentication status.",
+  "frontend/src/hooks/useQueries.ts": "Simple wrapper hook exposing actor and fetch state for future backend queries.",
+  "frontend/src/index.css": "Defines Tailwind base styles and a gold/white theme using CSS variables for light and dark modes.",
+  "frontend/src/main.tsx": "Bootstraps the app with React, wrapping it in QueryClientProvider and InternetIdentityProvider.",
+  "frontend/tailwind.config.js": "Configures Tailwind theme, colors, fonts, animations, and plugins for the project's premium branding.",
+  "project_state.json": "Stores project metadata, feature definitions, branding requirements, and overall project summary."
+}

@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Modern premium corporate gifting website for Pegasus Gifting with a guided chat-like experience that helps users self-identify needs and explore gift categories step-by-step, using gold/white branding and conversion-focused CTAs (WhatsApp + catalogue download) for bulk and single-order leads.",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Premium minimal hero background with abstract gift/ribbon motif in gold-on-white, subtle texture (pegasus-hero-bg.dim_1600x900.png)\n- Minimal gold line-icon set for 6 gifting categories (one sheet/grid), consistent stroke style on transparent background (pegasus-category-icons.dim_1200x800.png)\n- Simple premium Pegasus Gifting wordmark-style logo in gold on transparent background (pegasus-logo.dim_800x240.png)",
+  "existing_features": [
+    {
+      "id": "feature-create-a-guided-chat-like-landing-experience-for-pegasus-gifting-instead-of-a-static-marketing-page-that-steps-the-user-through-self-identifying-their-gifting-needs-and-progressively-reveals-the-next-options",
+      "title": "Create a guided, chat-like landing experience for Pegasus Gifting (instead of a static marketing page) that steps the user through self-identifying their gifting needs and progressively reveals the next options.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-clean-premium-gold-and-white-brand-system-across-the-website-colors-typography-spacing-shadows-components-and-apply-it-consistently-to-all-ui-states-default-hover-active-disabled",
+      "title": "Implement a clean, premium gold-and-white brand system across the website (colors, typography, spacing, shadows, components) and apply it consistently to all UI states (default, hover, active, disabled).",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-interactive-category-exploration-using-premium-styled-category-cards-that-appear-as-part-of-the-guided-flow-and-allow-users-to-drill-into-categories-step-by-step",
+      "title": "Add interactive category exploration using premium-styled category cards that appear as part of the guided flow and allow users to drill into categories step-by-step.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-conversion-focused-ctas-that-are-always-easy-to-find-at-the-appropriate-points-in-the-flow-1-whatsapp-contact-and-2-catalogue-download-supporting-both-bulk-and-single-order-lead-intent",
+      "title": "Add conversion-focused CTAs that are always easy to find at the appropriate points in the flow: (1) WhatsApp contact and (2) catalogue download, supporting both bulk and single-order lead intent.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-coherent-modern-premium-visual-theme-beyond-color-alone-layout-spacing-micro-interactions-subtle-animations-that-reinforces-a-guided-concierge-feel-and-remains-consistent-across-the-entire-site",
+      "title": "Add a coherent, modern premium visual theme beyond color alone (layout, spacing, micro-interactions, subtle animations) that reinforces a “guided concierge” feel and remains consistent across the entire site.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-required-static-generated-images-to-the-project-under-frontend-public-assets-generated-and-render-them-in-the-ui-hero-brand-area-category-cards-without-routing-images-through-the-backend",
+      "title": "Add required static generated images to the project under `frontend/public/assets/generated/` and render them in the UI (hero/brand area + category cards) without routing images through the backend.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Guided chat-like website flow to help users self-identify gifting needs and navigate step-by-step (instead of static page).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Gold and white premium branding applied across the site (clean, modern corporate look).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Interactive category cards for exploring gifting categories.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Clear conversion CTAs including WhatsApp contact and catalogue download for bulk and single-order leads.",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Pegasus Gifting",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

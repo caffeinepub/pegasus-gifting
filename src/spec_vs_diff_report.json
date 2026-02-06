@@ -1,0 +1,79 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-06T17:08:04.301Z",
+  "summary": "Diff adds a guided chat-style homepage flow with quick replies, category selection cards, and WhatsApp/catalogue CTAs, plus a gold/white Tailwind theme. However, several acceptance criteria are only partially met: no clear UI to change earlier answers (only restart), CTAs are not tailored by bulk vs single intent, and required generated image assets (especially category icon sheet) are not evidenced as added/used.",
+  "missing_requirements": [
+    {
+      "id": "REQ-1",
+      "requirement": "Users can restart the flow from the beginning and change earlier answers without refreshing the site.",
+      "reason": "Restart is implemented, but there is no visible UI to go back and change earlier answers; a goToStep function appears partially implemented in the hook but is not wired into any UI in the shown diff.",
+      "evidence": [
+        "frontend/src/features/guided-flow/GuidedFlow.tsx",
+        "frontend/src/features/guided-flow/useGuidedFlow.ts"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "requirement": "The guided flow offers a clear branch or question that differentiates bulk vs single-order intent and surfaces the most relevant CTAs accordingly.",
+      "reason": "The flow asks for intent (Bulk vs Single/Small), but the CTAs appear only at the final 'contact' step with no evidence of conditional CTA content/labels/links based on the selected intent.",
+      "evidence": [
+        "frontend/src/features/guided-flow/useGuidedFlow.ts",
+        "frontend/src/features/guided-flow/GuidedFlow.tsx",
+        "frontend/src/features/guided-flow/CTAButtons.tsx"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "requirement": "Add required static generated images to frontend/public/assets/generated/ and render them in the UI (hero/brand area + category cards).",
+      "reason": "UI references the hero background and logo under /assets/generated, but the diff summary does not show these files being added. Also, the required category icon set image is neither evidenced as added under assets/generated nor rendered in category cards (cards currently show a placeholder div rather than an icon image).",
+      "evidence": [
+        "frontend/src/App.tsx",
+        "frontend/src/features/guided-flow/CategoryCards.tsx"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Social media footer links (Facebook/Instagram/LinkedIn/X) and external attribution link in the footer.",
+      "reason": "Not requested in any requirement or acceptance criteria; adds extra outbound links/branding beyond the guided gifting flow and CTAs.",
+      "evidence": [
+        "frontend/src/App.tsx"
+      ]
+    },
+    {
+      "description": "Internet Identity + React Query plumbing (InternetIdentityProvider/useActor/useQueries) for a marketing-only site.",
+      "reason": "The BuildRequest explicitly notes third-party auth is a non-goal and not required; backend integration is not required for the CTAs/catalogue. This adds authentication/data-access scaffolding not requested by requirements.",
+      "evidence": [
+        "frontend/src/main.tsx",
+        "frontend/src/hooks/useInternetIdentity.ts",
+        "frontend/src/hooks/useActor.ts",
+        "frontend/src/hooks/useQueries.ts"
+      ]
+    }
+  ],
+  "confidence": 0.74,
+  "changed_files": [
+    "all_files_summary.json",
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/src/App.tsx",
+    "frontend/src/config/pegasus.ts",
+    "frontend/src/features/guided-flow/CTAButtons.tsx",
+    "frontend/src/features/guided-flow/CategoryCards.tsx",
+    "frontend/src/features/guided-flow/ChatMessageList.tsx",
+    "frontend/src/features/guided-flow/GuidedFlow.tsx",
+    "frontend/src/features/guided-flow/QuickReplies.tsx",
+    "frontend/src/features/guided-flow/types.ts",
+    "frontend/src/features/guided-flow/useGuidedFlow.ts",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "kind": "build_request",
+  "title": "Pegasus Gifting premium guided chat-style corporate gifting website",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a guided, chat-like landing experience for Pegasus Gifting (instead of a static marketing page) that steps the user through self-identifying their gifting needs and progressively reveals the next options.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Build a modern, premium corporate gifting website for Pegasus Gifting that feels like a guided chat experience rather than a static page, helping users self-identify needs and explore categories step by step."
+        ]
+      },
+      "acceptanceCriteria": [
+        "The primary homepage experience is presented as a conversational, step-by-step flow (chat UI pattern) with a clear sense of progression.",
+        "Users can move forward through the flow using guided choices (buttons/quick replies) rather than needing to scroll a long page.",
+        "Users can restart the flow from the beginning and change earlier answers without refreshing the site.",
+        "The experience works well on mobile and desktop (responsive layout)."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement a clean, premium gold-and-white brand system across the website (colors, typography, spacing, shadows, components) and apply it consistently to all UI states (default, hover, active, disabled).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "The site should use clean gold and white branding"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Gold and white are the dominant brand colors; accent neutrals (e.g., charcoal/gray) may be used for readability.",
+        "No blue/purple-led palette is introduced.",
+        "Buttons, cards, chat bubbles, and section backgrounds follow a single coherent visual system.",
+        "Typography reads as modern and premium (clear hierarchy for headings, prompts, and option labels)."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Add interactive category exploration using premium-styled category cards that appear as part of the guided flow and allow users to drill into categories step-by-step.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "interactive category cards"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Category cards are clearly clickable/tappable and have hover/focus states.",
+        "Selecting a category updates the guided flow to show relevant next-step content (e.g., subcategory prompts or a curated preview).",
+        "Cards display a category name and a small visual (icon/illustration) while maintaining the gold/white premium style.",
+        "Keyboard navigation can reach and activate category cards (tab + enter/space)."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Add conversion-focused CTAs that are always easy to find at the appropriate points in the flow: (1) WhatsApp contact and (2) catalogue download, supporting both bulk and single-order lead intent.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "clear CTAs (WhatsApp and catalogue download) to convert both bulk and single-order leads."
+        ]
+      },
+      "acceptanceCriteria": [
+        "There is a prominent WhatsApp CTA that opens a WhatsApp chat via a configurable link/number (configured in one place in the frontend).",
+        "There is a prominent catalogue download CTA that downloads a catalogue file from frontend static assets (or a configurable URL), without requiring backend calls.",
+        "The guided flow offers a clear branch or question that differentiates bulk vs single-order intent and surfaces the most relevant CTAs accordingly.",
+        "CTA buttons have clear English labels and strong visual emphasis consistent with the premium brand."
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Add a coherent, modern premium visual theme beyond color alone (layout, spacing, micro-interactions, subtle animations) that reinforces a “guided concierge” feel and remains consistent across the entire site.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The site uses a consistent layout system (max width, padding, rhythm) and a unified component style.",
+        "Animations (if used) are subtle and purposeful (e.g., message reveal, card entrance), and do not harm performance or readability.",
+        "The overall experience feels like a premium guided concierge rather than a generic chat widget pasted onto a page."
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Add required static generated images to the project under `frontend/public/assets/generated/` and render them in the UI (hero/brand area + category cards) without routing images through the backend.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All generated images are committed as static assets in `frontend/public/assets/generated/`.",
+        "The homepage/guided flow visually incorporates the generated hero/brand imagery and the category visuals.",
+        "No backend endpoints are created to serve or transform images."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not edit files under `frontend/src/components/ui` (compose them as-is).",
+    "Do not edit immutable hook files listed in the system context (e.g., `frontend/src/hooks/useInternetIdentity.ts`, `frontend/src/hooks/useActor.ts`, `frontend/src/main.tsx`).",
+    "Keep backend as a single Motoko actor; do not introduce additional backend services."
+  ],
+  "nonGoals": [
+    "Implementing third-party authentication providers (only Internet Identity would be allowed, but it is not required for this marketing site).",
+    "Adding real-time chat (WebSockets) or a human-agent chat system.",
+    "Integrating external CRMs, email/SMS providers, or social media APIs."
+  ],
+  "imageRequirements": {
+    "required": [
+      "Premium minimal hero background with abstract gift/ribbon motif in gold-on-white, subtle texture (pegasus-hero-bg.dim_1600x900.png)",
+      "Minimal gold line-icon set for 6 gifting categories (one sheet/grid), consistent stroke style on transparent background (pegasus-category-icons.dim_1200x800.png)",
+      "Simple premium Pegasus Gifting wordmark-style logo in gold on transparent background (pegasus-logo.dim_800x240.png)"
+    ],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}

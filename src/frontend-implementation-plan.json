@@ -1,0 +1,192 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Pegasus Gifting guided chat-style premium landing",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Build a guided, chat-like landing flow that progresses via guided choices, supports restart, and allows changing earlier answers without refresh.",
+      "acceptanceCriteria": [
+        "The primary homepage experience is presented as a conversational, step-by-step flow (chat UI pattern) with a clear sense of progression.",
+        "Users can move forward through the flow using guided choices (buttons/quick replies) rather than needing to scroll a long page.",
+        "Users can restart the flow from the beginning and change earlier answers without refreshing the site.",
+        "The experience works well on mobile and desktop (responsive layout)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "create",
+          "description": "Create the main app shell rendering the guided chat landing as the primary experience (no extra pages). Use shadcn-ui components (e.g., Button/Card) to structure the layout and interactions; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/features/guided-flow/useGuidedFlow.ts",
+          "operation": "create",
+          "description": "Implement a small client-side state machine/hook for the step-by-step guided flow (answers, current step, history), including restart and \"change answer\" behavior without full page reload."
+        },
+        {
+          "path": "frontend/src/features/guided-flow/GuidedFlow.tsx",
+          "operation": "create",
+          "description": "Create the guided chat UI container that renders messages progressively, shows a clear progression, and drives the flow via quick reply actions. Compose shadcn-ui primitives for consistent interaction patterns; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/features/guided-flow/ChatMessageList.tsx",
+          "operation": "create",
+          "description": "Render the conversational transcript (system prompts + user selections) with responsive spacing and accessible semantics."
+        },
+        {
+          "path": "frontend/src/features/guided-flow/QuickReplies.tsx",
+          "operation": "create",
+          "description": "Implement guided choice controls (quick reply buttons) with keyboard support and clear disabled/active states using shadcn-ui Button; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/features/guided-flow/types.ts",
+          "operation": "create",
+          "description": "Define shared types for steps, answers, message items, and category selection used across the guided flow."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Implement a consistent premium gold-and-white brand system (colors, typography, spacing, shadows) across all UI states.",
+      "acceptanceCriteria": [
+        "Gold and white are the dominant brand colors; accent neutrals (e.g., charcoal/gray) may be used for readability.",
+        "No blue/purple-led palette is introduced.",
+        "Buttons, cards, chat bubbles, and section backgrounds follow a single coherent visual system.",
+        "Typography reads as modern and premium (clear hierarchy for headings, prompts, and option labels)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "create",
+          "description": "Create global styles and CSS variables used by Tailwind/shadcn-ui to establish the gold/white palette, premium typography hierarchy, and consistent component state styling (hover/active/disabled). Verify the component's usage instructions before implementing when aligning shadcn-ui theming."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend Tailwind theme with premium-friendly typography (font families), refined shadows, and any additional semantic tokens needed to support a gold-and-white system without introducing blue/purple tones."
+        },
+        {
+          "path": "frontend/src/features/guided-flow/GuidedFlow.tsx",
+          "operation": "modify",
+          "description": "Apply the premium brand system to all guided flow UI states (chat bubbles, controls, cards) using Tailwind classes and shadcn-ui primitives; verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Add interactive category exploration via premium-styled category cards inside the guided flow, supporting step-by-step drilling and full keyboard access.",
+      "acceptanceCriteria": [
+        "Category cards are clearly clickable/tappable and have hover/focus states.",
+        "Selecting a category updates the guided flow to show relevant next-step content (e.g., subcategory prompts or a curated preview).",
+        "Cards display a category name and a small visual (icon/illustration) while maintaining the gold/white premium style.",
+        "Keyboard navigation can reach and activate category cards (tab + enter/space)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/features/guided-flow/CategoryCards.tsx",
+          "operation": "create",
+          "description": "Create accessible category card grid/list components used within the guided flow, with hover/focus/active styling and keyboard activation. Use shadcn-ui Card/Button (composition only; do not edit ui components); verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/config/pegasus.ts",
+          "operation": "create",
+          "description": "Centralize category definitions (names + mapping to icon locations + any subcategory prompts) for reuse in the guided flow and category cards."
+        },
+        {
+          "path": "frontend/src/features/guided-flow/GuidedFlow.tsx",
+          "operation": "modify",
+          "description": "Wire category cards into the step-by-step flow so selecting a category advances to the next relevant prompt/preview stage, and allows revisiting the category step."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Add prominent WhatsApp and catalogue download CTAs, with a bulk vs single-order intent branch surfaced in the guided flow and configurable CTA targets.",
+      "acceptanceCriteria": [
+        "There is a prominent WhatsApp CTA that opens a WhatsApp chat via a configurable link/number (configured in one place in the frontend).",
+        "There is a prominent catalogue download CTA that downloads a catalogue file from frontend static assets (or a configurable URL), without requiring backend calls.",
+        "The guided flow offers a clear branch or question that differentiates bulk vs single-order intent and surfaces the most relevant CTAs accordingly.",
+        "CTA buttons have clear English labels and strong visual emphasis consistent with the premium brand."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/config/pegasus.ts",
+          "operation": "modify",
+          "description": "Add configurable CTA settings (WhatsApp link/number + catalogue asset path and/or URL), and copy for bulk vs single-order intent branching used by the guided flow."
+        },
+        {
+          "path": "frontend/public/assets/pegasus-catalogue.pdf",
+          "operation": "create",
+          "description": "Add the static catalogue file as a frontend public asset to support direct download without backend calls."
+        },
+        {
+          "path": "frontend/src/features/guided-flow/GuidedFlow.tsx",
+          "operation": "modify",
+          "description": "Add the bulk vs single-order intent step and render prominent CTAs at the appropriate moments (WhatsApp + catalogue download) using shadcn-ui Button styling; verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Reinforce a coherent premium concierge theme with consistent layout rhythm, subtle micro-interactions, and purposeful animations across the flow.",
+      "acceptanceCriteria": [
+        "The site uses a consistent layout system (max width, padding, rhythm) and a unified component style.",
+        "Animations (if used) are subtle and purposeful (e.g., message reveal, card entrance), and do not harm performance or readability.",
+        "The overall experience feels like a premium guided concierge rather than a generic chat widget pasted onto a page."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Apply a consistent page layout wrapper (max width, premium spacing, background treatment) around the guided experience, including responsive behavior for mobile/desktop."
+        },
+        {
+          "path": "frontend/src/features/guided-flow/ChatMessageList.tsx",
+          "operation": "modify",
+          "description": "Add subtle message reveal/entrance micro-interactions (using existing Tailwind animation utilities) while preserving readability and performance."
+        },
+        {
+          "path": "frontend/src/features/guided-flow/CategoryCards.tsx",
+          "operation": "modify",
+          "description": "Add subtle card hover/press micro-interactions and entrance transitions consistent with the premium gold/white system; compose shadcn-ui Card/Button as-is and verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Add required generated images as static public assets and render them in the hero/brand area and category visuals (no backend image routing).",
+      "acceptanceCriteria": [
+        "All generated images are committed as static assets in `frontend/public/assets/generated/`.",
+        "The homepage/guided flow visually incorporates the generated hero/brand imagery and the category visuals.",
+        "No backend endpoints are created to serve or transform images."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/pegasus-hero-bg.dim_1600x900.png",
+          "operation": "create",
+          "description": "Add the generated hero background image as a static asset at the exact required path/filename."
+        },
+        {
+          "path": "frontend/public/assets/generated/pegasus-category-icons.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add the generated category icon sheet image as a static asset at the exact required path/filename."
+        },
+        {
+          "path": "frontend/public/assets/generated/pegasus-logo.dim_800x240.png",
+          "operation": "create",
+          "description": "Add the generated Pegasus Gifting wordmark-style logo image as a static asset at the exact required path/filename."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Render the brand/hero area using the static assets located at frontend/public/assets/generated/pegasus-hero-bg.dim_1600x900.png and frontend/public/assets/generated/pegasus-logo.dim_800x240.png (no backend involvement)."
+        },
+        {
+          "path": "frontend/src/features/guided-flow/CategoryCards.tsx",
+          "operation": "modify",
+          "description": "Wire category visuals to the generated icon sheet at frontend/public/assets/generated/pegasus-category-icons.dim_1200x800.png (e.g., by referencing the correct static asset and presenting per-category visuals) while keeping the premium gold/white style."
+        }
+      ]
+    }
+  ]
+}
