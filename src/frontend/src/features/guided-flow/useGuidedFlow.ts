@@ -4,52 +4,76 @@ import { type FlowState, type StepId, type Answer, type Message, type Step } fro
 const steps: Record<StepId, Step> = {
   welcome: {
     id: 'welcome',
-    systemMessage: 'Welcome to Pegasus Gifting! 🎁 I\'m here to help you find the perfect corporate gifts. Let\'s get started!',
+    systemMessage: 'Welcome to Pegasus Gifting! 🎁 I\'m here to help you find the perfect corporate gifts.',
     quickReplies: [
       { id: 'start', label: 'Let\'s Begin', value: 'start' }
     ]
   },
   intent: {
     id: 'intent',
-    systemMessage: 'Great! What brings you here today?',
+    systemMessage: 'What are you looking for today?',
     quickReplies: [
       { 
         id: 'bulk', 
-        label: 'Bulk Order', 
+        label: 'Bulk Corporate Gifting', 
         value: 'bulk',
-        description: 'For corporate events, employee gifts, or client appreciation'
+        description: 'Large orders for teams, events, or client appreciation'
       },
       { 
         id: 'single', 
-        label: 'Single/Small Order', 
+        label: 'Single / Few Gifts', 
         value: 'single',
-        description: 'For individual gifts or small quantities'
+        description: 'Executive gifts or small quantities'
+      },
+      { 
+        id: 'unsure', 
+        label: 'Not Sure / Exploring', 
+        value: 'unsure',
+        description: 'Learn more about our process'
       }
     ]
   },
+  'bulk-quantity': {
+    id: 'bulk-quantity',
+    systemMessage: 'Great! How many units are you looking for?',
+    quickReplies: [
+      { id: 'q1', label: '10-50 units', value: '10-50' },
+      { id: 'q2', label: '51-100 units', value: '51-100' },
+      { id: 'q3', label: '101-500 units', value: '101-500' },
+      { id: 'q4', label: '500+ units', value: '500+' }
+    ]
+  },
+  'single-purpose': {
+    id: 'single-purpose',
+    systemMessage: 'Perfect! What\'s the occasion or purpose?',
+    quickReplies: [
+      { id: 'p1', label: 'Client Appreciation', value: 'client-appreciation' },
+      { id: 'p2', label: 'Employee Recognition', value: 'employee-recognition' },
+      { id: 'p3', label: 'Executive Gift', value: 'executive-gift' },
+      { id: 'p4', label: 'Special Occasion', value: 'special-occasion' }
+    ]
+  },
+  'unsure-education': {
+    id: 'unsure-education',
+    systemMessage: 'No problem! Here\'s how we work:\n\n1️⃣ Share your requirement\n2️⃣ We curate suitable options\n3️⃣ You approve branding & details\n4️⃣ We handle production & delivery\n\nWould you like to explore our catalogue or speak with our team?',
+    showCatalogue: true
+  },
   category: {
     id: 'category',
-    systemMessage: 'Perfect! Which category interests you the most?',
+    systemMessage: 'Excellent! Which category interests you?',
     showCategories: true
-  },
-  quantity: {
-    id: 'quantity',
-    systemMessage: 'Excellent choice! How many units are you looking for?',
-    quickReplies: [
-      { id: 'q1', label: '1-10 units', value: '1-10' },
-      { id: 'q2', label: '11-50 units', value: '11-50' },
-      { id: 'q3', label: '51-100 units', value: '51-100' },
-      { id: 'q4', label: '100+ units', value: '100+' }
-    ]
   },
   contact: {
     id: 'contact',
-    systemMessage: 'Wonderful! I have all the information I need. Let\'s connect to discuss your requirements in detail.',
+    systemMessage: 'Perfect! I have all the details. Let\'s connect to discuss your requirements.',
+    showCTAs: true
+  },
+  'catalogue-view': {
+    id: 'catalogue-view',
+    systemMessage: 'You can view our full catalogue below. When you\'re ready, our team is here to help!',
     showCTAs: true
   }
 };
-
-const stepOrder: StepId[] = ['welcome', 'intent', 'category', 'quantity', 'contact'];
 
 function createMessage(type: 'system' | 'user', content: string): Message {
   return {
@@ -73,16 +97,42 @@ export function useGuidedFlow() {
   }, [state.currentStepId]);
 
   const handleAnswer = useCallback((value: string, label: string) => {
-    const currentStep = steps[state.currentStepId];
+    const currentStepId = state.currentStepId;
     const answer: Answer = {
-      stepId: state.currentStepId,
+      stepId: currentStepId,
       value,
       label
     };
 
     const userMessage = createMessage('user', label);
-    const currentIndex = stepOrder.indexOf(state.currentStepId);
-    const nextStepId = stepOrder[currentIndex + 1];
+    let nextStepId: StepId | null = null;
+    let newIntent = state.intent;
+
+    // Determine next step based on current step and answer
+    if (currentStepId === 'welcome') {
+      nextStepId = 'intent';
+    } else if (currentStepId === 'intent') {
+      if (value === 'bulk') {
+        nextStepId = 'bulk-quantity';
+        newIntent = 'bulk';
+      } else if (value === 'single') {
+        nextStepId = 'single-purpose';
+        newIntent = 'single';
+      } else if (value === 'unsure') {
+        nextStepId = 'unsure-education';
+        newIntent = 'unsure';
+      }
+    } else if (currentStepId === 'bulk-quantity' || currentStepId === 'single-purpose') {
+      nextStepId = 'category';
+    } else if (currentStepId === 'category') {
+      nextStepId = 'contact';
+    } else if (currentStepId === 'unsure-education') {
+      if (value === 'catalogue') {
+        nextStepId = 'catalogue-view';
+      } else if (value === 'contact') {
+        nextStepId = 'contact';
+      }
+    }
 
     if (nextStepId) {
       const nextStep = steps[nextStepId];
@@ -90,10 +140,11 @@ export function useGuidedFlow() {
 
       setState(prev => ({
         ...prev,
-        currentStepId: nextStepId,
+        currentStepId: nextStepId!,
         answers: [...prev.answers, answer],
         messages: [...prev.messages, userMessage, systemMessage],
-        isComplete: nextStepId === 'contact'
+        isComplete: nextStepId === 'contact' || nextStepId === 'catalogue-view',
+        intent: newIntent
       }));
     } else {
       setState(prev => ({
@@ -103,7 +154,7 @@ export function useGuidedFlow() {
         isComplete: true
       }));
     }
-  }, [state.currentStepId]);
+  }, [state.currentStepId, state.intent]);
 
   const restart = useCallback(() => {
     setState({
@@ -114,29 +165,34 @@ export function useGuidedFlow() {
     });
   }, []);
 
-  const goToStep = useCallback((stepId: StepId) => {
-    const stepIndex = stepOrder.indexOf(stepId);
-    const currentIndex = stepOrder.indexOf(state.currentStepId);
+  const getIntentLabel = useCallback((): string => {
+    const intentAnswer = state.answers.find(a => a.stepId === 'intent');
+    if (!intentAnswer) return '';
+    
+    if (intentAnswer.value === 'bulk') return 'bulk corporate gifting';
+    if (intentAnswer.value === 'single') return 'single/few gifts';
+    return 'exploring options';
+  }, [state.answers]);
 
-    if (stepIndex < currentIndex) {
-      // Going back - remove answers and messages after this step
-      const newAnswers = state.answers.slice(0, stepIndex);
-      const messagesToKeep = state.messages.slice(0, (stepIndex + 1) * 2);
-      
-      setState({
-        currentStepId: stepId,
-        answers: newAnswers,
-        messages: messagesToKeep,
-        isComplete: false
-      });
-    }
-  }, [state]);
+  const getSecondAnswer = useCallback((): string => {
+    const secondAnswer = state.answers.find(
+      a => a.stepId === 'bulk-quantity' || a.stepId === 'single-purpose'
+    );
+    return secondAnswer?.label || '';
+  }, [state.answers]);
+
+  const getCategoryLabel = useCallback((): string => {
+    const categoryAnswer = state.answers.find(a => a.stepId === 'category');
+    return categoryAnswer?.label || '';
+  }, [state.answers]);
 
   return {
     state,
     currentStep: getCurrentStep(),
     handleAnswer,
     restart,
-    goToStep
+    getIntentLabel,
+    getSecondAnswer,
+    getCategoryLabel
   };
 }

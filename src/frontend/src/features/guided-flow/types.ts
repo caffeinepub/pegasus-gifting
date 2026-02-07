@@ -1,9 +1,12 @@
 export type StepId = 
   | 'welcome'
   | 'intent'
+  | 'bulk-quantity'
+  | 'single-purpose'
+  | 'unsure-education'
   | 'category'
-  | 'quantity'
-  | 'contact';
+  | 'contact'
+  | 'catalogue-view';
 
 export interface Message {
   id: string;
@@ -31,6 +34,7 @@ export interface Step {
   quickReplies?: QuickReply[];
   showCategories?: boolean;
   showCTAs?: boolean;
+  showCatalogue?: boolean;
 }
 
 export interface FlowState {
@@ -38,4 +42,5 @@ export interface FlowState {
   answers: Answer[];
   messages: Message[];
   isComplete: boolean;
+  intent?: 'bulk' | 'single' | 'unsure';
 }

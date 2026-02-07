@@ -1,23 +1,183 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Add a Home navigation option that restarts the guided chat",
+  "title": "Pegasus Gifting red-themed guided chat lead-qualification with WhatsApp handoff",
   "requirements": [
     {
-      "id": "REQ-7",
-      "summary": "Add a keyboard-accessible \"Home\" menu option that resets the guided chat to the welcome step and scrolls back to the top without adding routes or reloading.",
+      "id": "REQ-1",
+      "summary": "Switch the UI to a premium light theme with consistent bold red primary accents across CTAs, borders/rings, and guided chat highlights.",
       "acceptanceCriteria": [
-        "A clearly visible navigation/menu area includes a \"Home\" option labeled exactly \"Home\".",
-        "Clicking \"Home\" resets the guided flow back to the initial welcome state (equivalent to Start Over/restart).",
-        "Clicking \"Home\" scrolls the page to the top of the app (or hero/header area) so the user is oriented back at the start.",
-        "The Home option is keyboard accessible and has an appropriate accessible label/semantics (e.g., button or link).",
-        "No new pages or routing are introduced; the app remains a single-page guided experience."
+        "Tailwind theme variables in frontend/src/index.css use a red primary palette (replacing the current gold palette) while keeping a light background.",
+        "Primary buttons, focus rings, and key accents render in red across HomePage and guided flow components.",
+        "No blue/purple dominant accents appear in the primary UI."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/App.tsx",
+          "path": "frontend/src/index.css",
           "operation": "modify",
-          "description": "Introduce a simple navigation/menu area in the existing hero header that includes a \"Home\" button (semantic <button>), and implement its behavior to (1) reset the guided experience back to the welcome step without any route changes by forcing a GuidedFlow remount via a React key, and (2) scroll the window back to the top (smoothly) so the hero/header is visible again. Ensure the \"Home\" control is clearly visible, keyboard accessible, and has appropriate accessible labeling."
+          "description": "Replace the current gold-based CSS variables (primary/accent/ring/border and related chart tokens) with a red primary palette while retaining a light background and clean white card contrast."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Update theme extensions that are currently gold-specific (e.g., shadow colors) to match the new red primary accents so CTAs and highlighted UI feel consistently red."
+        },
+        {
+          "path": "frontend/src/features/guided-flow/ChatMessageList.tsx",
+          "operation": "modify",
+          "description": "Ensure chat message styling (system bubble accents, user bubble, and emphasis elements) consistently uses the red primary tokens (primary/ring) with premium light contrast (no blue/purple accents)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Add a premium B2B header showing “PEGASUS GIFTING” with a red Pegasus logo and good responsive alignment.",
+      "acceptanceCriteria": [
+        "A top header is visible on the main page with the text “PEGASUS GIFTING”.",
+        "The header includes the red Pegasus logo asset and maintains good contrast on the light background.",
+        "Header remains readable and well-aligned on mobile and desktop."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/pegasus-logo-red.dim_512x512.png",
+          "operation": "create",
+          "description": "Add the required red Pegasus logo mark asset at frontend/public/assets/generated/pegasus-logo-red.dim_512x512.png and use it in the header."
+        },
+        {
+          "path": "frontend/src/components/BrandHeader.tsx",
+          "operation": "create",
+          "description": "Create a responsive premium header component that displays the red Pegasus logo and the brand name “PEGASUS GIFTING”. Use shadcn-ui styling primitives where appropriate for consistent typography and spacing. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Wire the new BrandHeader into the top of the main page and ensure layout remains premium on mobile/desktop. Use shadcn-ui components already present in the project for consistent header spacing/containers. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Refactor the homepage into a guided, chat-led qualification experience with quick replies and smooth transitions as the primary interaction.",
+      "acceptanceCriteria": [
+        "The primary interaction on landing is the guided chat flow (with quick-reply style buttons/cards), not a scroll-first multi-section layout.",
+        "Users can complete a qualification path in 2–3 selections before seeing the WhatsApp CTA.",
+        "The experience uses card-based interactions and smooth transitions (existing fade/slide animations are acceptable)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Replace the current long, scroll-first homepage sections with a chat-led layout that features the GuidedFlow as the primary above-the-fold interaction (e.g., centered chat card/panel on a light background). Ensure the experience is interaction-first rather than scroll-first."
+        },
+        {
+          "path": "frontend/src/features/guided-flow/GuidedFlow.tsx",
+          "operation": "modify",
+          "description": "Adjust the guided flow container to behave like a premium chat experience on the homepage (card-like framing, smooth transitions, appropriate height/scrolling). Use shadcn-ui Card patterns already in the app where helpful. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Implement the required minimal branching flow: intent question, then quantity/purpose depending on intent, and only then show WhatsApp handoff.",
+      "acceptanceCriteria": [
+        "The first question includes options for bulk, single/few, and an exploration/not-sure path.",
+        "Bulk path: user selects a quantity range as the second step before WhatsApp is offered.",
+        "Single/few path: user selects a purpose/occasion as the second step before WhatsApp is offered.",
+        "WhatsApp CTA does not appear before the second question is answered."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/features/guided-flow/types.ts",
+          "operation": "modify",
+          "description": "Update guided-flow step/type definitions to support the new branching steps (bulk vs single/few vs unsure) and allow conditional navigation while keeping type safety."
+        },
+        {
+          "path": "frontend/src/features/guided-flow/useGuidedFlow.ts",
+          "operation": "modify",
+          "description": "Refactor the state machine from a fixed linear stepOrder into a minimal branching flow: Q1 intent (bulk/single/unsure) -> Q2 quantity (bulk) or purpose/occasion (single/few) or unsure education -> only after Q2 enable the contact/CTA step."
+        },
+        {
+          "path": "frontend/src/features/guided-flow/QuickReplies.tsx",
+          "operation": "modify",
+          "description": "Ensure quick-reply UI supports the new first/second-question options (including an Exploration/Not sure option) and remains consistent with the red primary focus/hover states."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Add an Exploration/Unsure path that explains “How It Works” in-chat and offers catalogue view/download before optionally suggesting WhatsApp.",
+      "acceptanceCriteria": [
+        "In the unsure/exploration path, the guided chat presents a short “How It Works” explanation as a system message (or short sequence of messages).",
+        "A catalogue action (view/download) is presented prior to any WhatsApp CTA for this path.",
+        "WhatsApp remains optional and appears as a next step (not forced) after catalogue/help is offered."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/pegasus-catalogue.pdf",
+          "operation": "create",
+          "description": "Place the Master Catalogue PDF at frontend/public/assets/pegasus-catalogue.pdf so the guided flow can offer a stable view/download action without backend storage."
+        },
+        {
+          "path": "frontend/src/features/guided-flow/useGuidedFlow.ts",
+          "operation": "modify",
+          "description": "Implement the unsure/exploration branch to inject a short “How It Works” explanation as system messages and then present catalogue actions before showing an optional WhatsApp “Speak to our team” next step."
+        },
+        {
+          "path": "frontend/src/features/guided-flow/CTAButtons.tsx",
+          "operation": "modify",
+          "description": "Adjust CTA rendering so the exploration path can show catalogue view/download first and only then optionally show WhatsApp. Update copy to remain non-pushy and consistent with the guided conversation. Use shadcn-ui button styling conventions already in the app. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Highlight curated gift categories as selectable cards within the guided flow while removing any pricing/delivery/vendor-related copy.",
+      "acceptanceCriteria": [
+        "Categories render as card-based selectable UI using existing category data (frontend/src/config/pegasus.ts) or an updated curated set.",
+        "No UI text includes pricing, “typical price ranges”, delivery timelines/promises, or vendor/supplier details.",
+        "Any existing copy that implies pricing or delivery promises is removed/rewritten to comply (including the current catalogue section wording and the delivery-focused “How It Works” step text)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/config/pegasus.ts",
+          "operation": "modify",
+          "description": "Update/curate category names/descriptions (used by category cards) to ensure none mention pricing, delivery timelines/promises, or vendor/supplier details; keep them premium and intent-focused."
+        },
+        {
+          "path": "frontend/src/features/guided-flow/CategoryCards.tsx",
+          "operation": "modify",
+          "description": "Ensure category cards are prominently usable within the guided flow as a selectable card UI for both bulk and single/few paths, without displaying pricing, delivery, or vendor details. Use shadcn-ui Card patterns already present in the project where appropriate. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Remove or rewrite any remaining homepage copy that references pricing (“typical price ranges”, “pricing may vary”), delivery promises/timelines, or vendor/supplier details, since the homepage is now chat-led and must comply with content constraints."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Make WhatsApp handoff feel natural (“Speak to our team”) and prefill the message with the user’s selected intent + quantity/purpose + category (if chosen), keeping catalogue as a separate option where relevant.",
+      "acceptanceCriteria": [
+        "All WhatsApp CTAs use “Speak to our team” (or close equivalent) instead of “Chat With Us” / “Chat on WhatsApp”.",
+        "The WhatsApp deep link message includes the key selections the user made in the guided flow.",
+        "Catalogue remains available as a separate, non-pushy option where appropriate."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/config/pegasus.ts",
+          "operation": "modify",
+          "description": "Extend WhatsApp link generation to support building a prefilled message from guided-flow selections (intent + quantity/purpose + optional category) while keeping the WhatsApp number centrally configured."
+        },
+        {
+          "path": "frontend/src/features/guided-flow/useGuidedFlow.ts",
+          "operation": "modify",
+          "description": "Track and expose the user’s selected answers (intent, second-question answer, and optional category) in a way that can be composed into a WhatsApp-prefill message only after the second question is answered."
+        },
+        {
+          "path": "frontend/src/features/guided-flow/CTAButtons.tsx",
+          "operation": "modify",
+          "description": "Update WhatsApp CTA label/copy to “Speak to our team” and wire the WhatsApp deep link to use the computed prefilled message from the guided flow. Keep catalogue actions available as a separate, non-pushy option where relevant. Use shadcn-ui button patterns already in the app. Verify the component's usage instructions before implementing."
         }
       ]
     }

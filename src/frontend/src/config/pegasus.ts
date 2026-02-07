@@ -7,39 +7,39 @@ export interface Category {
 
 export const categories: Category[] = [
   {
-    id: 'corporate',
-    name: 'Corporate Gifts',
-    description: 'Premium branded gifts for employees and clients',
+    id: 'combo-gift-sets',
+    name: 'Combo Gift Sets',
+    description: 'Thoughtfully curated gift combinations',
     iconIndex: 0
   },
   {
-    id: 'festive',
-    name: 'Festive Hampers',
-    description: 'Curated gift hampers for celebrations',
+    id: 'office-executive',
+    name: 'Office & Executive',
+    description: 'Premium desk accessories and essentials',
     iconIndex: 1
   },
   {
-    id: 'luxury',
-    name: 'Luxury Items',
-    description: 'High-end gifts for special occasions',
+    id: 'tech-utility',
+    name: 'Tech & Utility',
+    description: 'Modern gadgets and practical accessories',
     iconIndex: 2
   },
   {
-    id: 'wellness',
-    name: 'Wellness & Self-Care',
-    description: 'Thoughtful wellness and self-care products',
+    id: 'bottles-drinkware',
+    name: 'Bottles & Drinkware',
+    description: 'Elegant bottles and premium drinkware',
     iconIndex: 3
   },
   {
-    id: 'tech',
-    name: 'Tech Accessories',
-    description: 'Modern tech gadgets and accessories',
+    id: 'bags-premium',
+    name: 'Bags & Premium Gifts',
+    description: 'Luxury bags and high-end items',
     iconIndex: 4
   },
   {
-    id: 'custom',
-    name: 'Custom Solutions',
-    description: 'Bespoke gifting tailored to your needs',
+    id: 'awards-recognition',
+    name: 'Awards & Recognition',
+    description: 'Trophies, plaques, and recognition items',
     iconIndex: 5
   }
 ];
@@ -47,7 +47,7 @@ export const categories: Category[] = [
 export const config = {
   whatsapp: {
     number: '919876543210',
-    message: 'Hello! I would like to know more about Pegasus Gifting services.'
+    defaultMessage: 'Hello! I would like to know more about Pegasus Gifting services.'
   },
   catalogue: {
     url: '/assets/pegasus-catalogue.pdf',
@@ -60,7 +60,32 @@ export const config = {
   }
 };
 
-export function getWhatsAppLink(): string {
-  const { number, message } = config.whatsapp;
+export function getWhatsAppLink(customMessage?: string): string {
+  const { number, defaultMessage } = config.whatsapp;
+  const message = customMessage || defaultMessage;
   return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+}
+
+export function buildWhatsAppMessage(
+  intent: string,
+  secondAnswer?: string,
+  category?: string
+): string {
+  let message = `Hello! I'm interested in ${intent}`;
+  
+  if (secondAnswer) {
+    if (intent === 'bulk corporate gifting') {
+      message += ` (${secondAnswer} units)`;
+    } else if (intent === 'single/few gifts') {
+      message += ` for ${secondAnswer}`;
+    }
+  }
+  
+  if (category) {
+    message += `. I'm particularly interested in ${category}`;
+  }
+  
+  message += '. Could you help me with this?';
+  
+  return message;
 }

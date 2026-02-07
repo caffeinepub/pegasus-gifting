@@ -2,10 +2,129 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-add-a-navigation-menu-option-labeled-home-to-the-pegasus-gifting-site-interface-the-home-action-must-return-the-user-to-the-start-of-the-guided-chat-experience-welcome-step-and-bring-the-view-back-to-the-top-of-the-main-content-without-requiring-a-page-reload-or-adding-new-routes",
-      "featureTitle": "Add a navigation menu option labeled \"Home\" to the Pegasus Gifting site interface. The Home action must return the user to the start of the guided chat experience (welcome step) and bring the view back to the top of the main content without requiring a page reload or adding new routes.",
+      "featureId": "feature-update-the-site-s-visual-design-to-a-premium-b2b-look-with-a-light-background-bold-red-primary-accents-and-clean-white-contrast-accents-ensure-all-primary-ctas-borders-rings-and-chat-ui-highlights-use-the-red-primary-color-consistently",
+      "featureTitle": "Update the site’s visual design to a premium B2B look with a light background, bold red primary accents, and clean white contrast accents; ensure all primary CTAs, borders/rings, and chat UI highlights use the red primary color consistently.",
       "files": [
-        "frontend/src/App.tsx"
+        "frontend/src/features/guided-flow/ChatMessageList.tsx",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-header-that-clearly-displays-the-brand-name-pegasus-gifting-alongside-a-red-pegasus-logo-and-keep-the-overall-header-styling-premium-and-professional-for-b2b-clients",
+      "featureTitle": "Add a header that clearly displays the brand name “PEGASUS GIFTING” alongside a red Pegasus logo, and keep the overall header styling premium and professional for B2B clients.",
+      "files": [
+        "frontend/src/components/BrandHeader.tsx",
+        "frontend/src/pages/HomePage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-make-the-homepage-behave-as-a-guided-chat-led-experience-not-a-traditional-long-static-page-that-asks-2-3-click-based-questions-to-qualify-intent-before-offering-a-whatsapp-handoff",
+      "featureTitle": "Make the homepage behave as a guided, chat-led experience (not a traditional long static page) that asks 2–3 click-based questions to qualify intent before offering a WhatsApp handoff.",
+      "files": [
+        "frontend/src/features/guided-flow/GuidedFlow.tsx",
+        "frontend/src/pages/HomePage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-a-minimal-branching-flow-first-ask-what-the-user-is-looking-for-bulk-corporate-gifting-vs-single-few-gifts-vs-exploration-not-sure-then-ask-either-quantity-range-for-bulk-or-purpose-occasion-for-single-few-then-show-a-whatsapp-handoff-only-after-the-second-question-is-answered",
+      "featureTitle": "Implement a minimal branching flow: first ask what the user is looking for (Bulk corporate gifting vs Single/few gifts vs Exploration/Not sure), then ask either quantity range (for bulk) or purpose/occasion (for single/few), then show a WhatsApp handoff only after the second question is answered.",
+      "files": [
+        "frontend/src/features/guided-flow/QuickReplies.tsx",
+        "frontend/src/features/guided-flow/types.ts",
+        "frontend/src/features/guided-flow/useGuidedFlow.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-an-unsure-exploration-path-that-shows-a-short-how-it-works-explanation-inside-the-guided-conversation-and-offers-an-option-to-view-download-the-master-catalogue-pdf-before-suggesting-whatsapp",
+      "featureTitle": "Add an “Unsure / Exploration” path that shows a short “How It Works” explanation inside the guided conversation and offers an option to view/download the Master Catalogue PDF before suggesting WhatsApp.",
+      "files": [
+        "frontend/src/features/guided-flow/CTAButtons.tsx",
+        "frontend/src/features/guided-flow/useGuidedFlow.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-ensure-curated-gift-categories-are-highlighted-as-selectable-cards-within-the-guided-flow-and-or-as-an-optional-exploration-step-to-support-both-bulk-and-single-orders-without-showing-pricing-delivery-promises-or-vendor-details",
+      "featureTitle": "Ensure curated gift categories are highlighted as selectable cards within the guided flow (and/or as an optional exploration step) to support both bulk and single orders without showing pricing, delivery promises, or vendor details.",
+      "files": [
+        "frontend/src/config/pegasus.ts",
+        "frontend/src/features/guided-flow/CategoryCards.tsx",
+        "frontend/src/pages/HomePage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-whatsapp-handoff-ux-and-copy-so-it-feels-natural-and-intentional-label-it-as-speak-to-our-team-not-a-salesy-push-include-clear-but-non-pushy-ctas-and-prefill-the-whatsapp-message-with-the-user-s-selected-path-answers-intent-quantity-purpose-category-if-chosen",
+      "featureTitle": "Update WhatsApp handoff UX and copy so it feels natural and intentional: label it as “Speak to our team” (not a salesy push), include clear but non-pushy CTAs, and prefill the WhatsApp message with the user’s selected path answers (intent + quantity/purpose + category if chosen).",
+      "files": [
+        "frontend/src/config/pegasus.ts",
+        "frontend/src/features/guided-flow/CTAButtons.tsx",
+        "frontend/src/features/guided-flow/useGuidedFlow.ts"
       ],
       "components": [
         "core-infrastructure@1.0.2",

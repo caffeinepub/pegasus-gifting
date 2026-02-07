@@ -1,62 +1,66 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 5,
-  "summary": "Modern premium corporate gifting website for Pegasus Gifting with a guided chat-like experience that helps users self-identify needs and explore gift categories step-by-step, using gold/white branding and conversion-focused CTAs (WhatsApp + catalogue download) for bulk and single-order leads.",
-  "architectural_notes": [],
+  "projectStateVersion": 3,
+  "summary": "Interactive, chat-led corporate gifting website for Pegasus Gifting with premium B2B styling and a guided 2–3 step qualification flow that hands off to WhatsApp.",
+  "architectural_notes": [
+    "Conversational, card-based UI with minimal text and smooth transitions; avoid traditional static-site navigation.",
+    "Do not display pricing, delivery promises, or vendor details anywhere in the experience."
+  ],
   "known_issues": [],
   "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Red Pegasus logo mark on transparent background (pegasus-logo-red.dim_512x512.png)\n- Red Pegasus favicon icon on transparent background (pegasus-favicon-red.dim_64x64.png)",
   "existing_features": [
     {
-      "id": "feature-create-a-guided-chat-like-landing-experience-for-pegasus-gifting-instead-of-a-static-marketing-page-that-steps-the-user-through-self-identifying-their-gifting-needs-and-progressively-reveals-the-next-options",
-      "title": "Create a guided, chat-like landing experience for Pegasus Gifting (instead of a static marketing page) that steps the user through self-identifying their gifting needs and progressively reveals the next options.",
+      "id": "feature-update-the-site-s-visual-design-to-a-premium-b2b-look-with-a-light-background-bold-red-primary-accents-and-clean-white-contrast-accents-ensure-all-primary-ctas-borders-rings-and-chat-ui-highlights-use-the-red-primary-color-consistently",
+      "title": "Update the site’s visual design to a premium B2B look with a light background, bold red primary accents, and clean white contrast accents; ensure all primary CTAs, borders/rings, and chat UI highlights use the red primary color consistently.",
       "reqIds": [
         "REQ-1"
       ],
       "version": 1
     },
     {
-      "id": "feature-implement-a-clean-premium-gold-and-white-brand-system-across-the-website-colors-typography-spacing-shadows-components-and-apply-it-consistently-to-all-ui-states-default-hover-active-disabled",
-      "title": "Implement a clean, premium gold-and-white brand system across the website (colors, typography, spacing, shadows, components) and apply it consistently to all UI states (default, hover, active, disabled).",
+      "id": "feature-add-a-header-that-clearly-displays-the-brand-name-pegasus-gifting-alongside-a-red-pegasus-logo-and-keep-the-overall-header-styling-premium-and-professional-for-b2b-clients",
+      "title": "Add a header that clearly displays the brand name “PEGASUS GIFTING” alongside a red Pegasus logo, and keep the overall header styling premium and professional for B2B clients.",
       "reqIds": [
         "REQ-2"
       ],
       "version": 1
     },
     {
-      "id": "feature-add-interactive-category-exploration-using-premium-styled-category-cards-that-appear-as-part-of-the-guided-flow-and-allow-users-to-drill-into-categories-step-by-step",
-      "title": "Add interactive category exploration using premium-styled category cards that appear as part of the guided flow and allow users to drill into categories step-by-step.",
+      "id": "feature-make-the-homepage-behave-as-a-guided-chat-led-experience-not-a-traditional-long-static-page-that-asks-2-3-click-based-questions-to-qualify-intent-before-offering-a-whatsapp-handoff",
+      "title": "Make the homepage behave as a guided, chat-led experience (not a traditional long static page) that asks 2–3 click-based questions to qualify intent before offering a WhatsApp handoff.",
       "reqIds": [
         "REQ-3"
       ],
       "version": 1
     },
     {
-      "id": "feature-add-conversion-focused-ctas-that-are-always-easy-to-find-at-the-appropriate-points-in-the-flow-1-whatsapp-contact-and-2-catalogue-download-supporting-both-bulk-and-single-order-lead-intent",
-      "title": "Add conversion-focused CTAs that are always easy to find at the appropriate points in the flow: (1) WhatsApp contact and (2) catalogue download, supporting both bulk and single-order lead intent.",
+      "id": "feature-implement-a-minimal-branching-flow-first-ask-what-the-user-is-looking-for-bulk-corporate-gifting-vs-single-few-gifts-vs-exploration-not-sure-then-ask-either-quantity-range-for-bulk-or-purpose-occasion-for-single-few-then-show-a-whatsapp-handoff-only-after-the-second-question-is-answered",
+      "title": "Implement a minimal branching flow: first ask what the user is looking for (Bulk corporate gifting vs Single/few gifts vs Exploration/Not sure), then ask either quantity range (for bulk) or purpose/occasion (for single/few), then show a WhatsApp handoff only after the second question is answered.",
       "reqIds": [
         "REQ-4"
       ],
       "version": 1
     },
     {
-      "id": "feature-add-a-coherent-modern-premium-visual-theme-beyond-color-alone-layout-spacing-micro-interactions-subtle-animations-that-reinforces-a-guided-concierge-feel-and-remains-consistent-across-the-entire-site",
-      "title": "Add a coherent, modern premium visual theme beyond color alone (layout, spacing, micro-interactions, subtle animations) that reinforces a “guided concierge” feel and remains consistent across the entire site.",
+      "id": "feature-add-an-unsure-exploration-path-that-shows-a-short-how-it-works-explanation-inside-the-guided-conversation-and-offers-an-option-to-view-download-the-master-catalogue-pdf-before-suggesting-whatsapp",
+      "title": "Add an “Unsure / Exploration” path that shows a short “How It Works” explanation inside the guided conversation and offers an option to view/download the Master Catalogue PDF before suggesting WhatsApp.",
       "reqIds": [
         "REQ-5"
       ],
       "version": 1
     },
     {
-      "id": "feature-add-required-static-generated-images-to-the-project-under-frontend-public-assets-generated-and-render-them-in-the-ui-hero-brand-area-category-cards-without-routing-images-through-the-backend",
-      "title": "Add required static generated images to the project under `frontend/public/assets/generated/` and render them in the UI (hero/brand area + category cards) without routing images through the backend.",
+      "id": "feature-ensure-curated-gift-categories-are-highlighted-as-selectable-cards-within-the-guided-flow-and-or-as-an-optional-exploration-step-to-support-both-bulk-and-single-orders-without-showing-pricing-delivery-promises-or-vendor-details",
+      "title": "Ensure curated gift categories are highlighted as selectable cards within the guided flow (and/or as an optional exploration step) to support both bulk and single orders without showing pricing, delivery promises, or vendor details.",
       "reqIds": [
         "REQ-6"
       ],
       "version": 1
     },
     {
-      "id": "feature-add-a-navigation-menu-option-labeled-home-to-the-pegasus-gifting-site-interface-the-home-action-must-return-the-user-to-the-start-of-the-guided-chat-experience-welcome-step-and-bring-the-view-back-to-the-top-of-the-main-content-without-requiring-a-page-reload-or-adding-new-routes",
-      "title": "Add a navigation menu option labeled \"Home\" to the Pegasus Gifting site interface. The Home action must return the user to the start of the guided chat experience (welcome step) and bring the view back to the top of the main content without requiring a page reload or adding new routes.",
+      "id": "feature-update-whatsapp-handoff-ux-and-copy-so-it-feels-natural-and-intentional-label-it-as-speak-to-our-team-not-a-salesy-push-include-clear-but-non-pushy-ctas-and-prefill-the-whatsapp-message-with-the-user-s-selected-path-answers-intent-quantity-purpose-category-if-chosen",
+      "title": "Update WhatsApp handoff UX and copy so it feels natural and intentional: label it as “Speak to our team” (not a salesy push), include clear but non-pushy CTAs, and prefill the WhatsApp message with the user’s selected path answers (intent + quantity/purpose + category if chosen).",
       "reqIds": [
         "REQ-7"
       ],
@@ -66,31 +70,37 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Guided chat-like website flow to help users self-identify gifting needs and navigate step-by-step (instead of static page).",
+      "summary": "Create Pegasus Gifting branded website UI (bold red theme on light background, white accents, red Pegasus logo) with header displaying 'PEGASUS GIFTING' in a premium B2B style.",
       "reqIds": [],
       "status": "pending"
     },
     {
       "id": "AR-2",
-      "summary": "Gold and white premium branding applied across the site (clean, modern corporate look).",
+      "summary": "Implement guided, chat-led interaction (card-based, smooth transitions) with 2–3 click-based questions to qualify intent (bulk corporate gifting vs single/few gifts vs exploration).",
       "reqIds": [],
       "status": "pending"
     },
     {
       "id": "AR-3",
-      "summary": "Interactive category cards for exploring gifting categories.",
+      "summary": "Add smart branching flow: ask intent first, then ask quantity range or purpose as appropriate, and only then offer WhatsApp handoff once interest is gauged.",
       "reqIds": [],
       "status": "pending"
     },
     {
       "id": "AR-4",
-      "summary": "Clear conversion CTAs including WhatsApp contact and catalogue download for bulk and single-order leads.",
+      "summary": "Provide an 'Unsure' path with a short 'How It Works' explanation and option to view/download a Master Catalogue PDF before suggesting WhatsApp.",
       "reqIds": [],
       "status": "pending"
     },
     {
       "id": "AR-5",
-      "summary": "Add a navigation menu option labeled “Home” to the Pegasus Gifting site interface.",
+      "summary": "Support both bulk and single orders and highlight curated gift categories with clear but non-pushy CTAs.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Implement WhatsApp handoff UX positioned as 'Speak to our team' (natural, intentional, never forced).",
       "reqIds": [],
       "status": "pending"
     }

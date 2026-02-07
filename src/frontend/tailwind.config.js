@@ -69,9 +69,9 @@ export default {
             },
             boxShadow: {
                 xs: '0 1px 2px 0 rgba(0,0,0,0.05)',
-                'gold-sm': '0 2px 8px -2px rgba(184, 134, 11, 0.15)',
-                'gold-md': '0 4px 16px -4px rgba(184, 134, 11, 0.2)',
-                'gold-lg': '0 8px 32px -8px rgba(184, 134, 11, 0.25)'
+                'red-sm': '0 2px 8px -2px rgba(220, 38, 38, 0.15)',
+                'red-md': '0 4px 16px -4px rgba(220, 38, 38, 0.2)',
+                'red-lg': '0 8px 32px -8px rgba(220, 38, 38, 0.25)'
             },
             keyframes: {
                 'accordion-down': {

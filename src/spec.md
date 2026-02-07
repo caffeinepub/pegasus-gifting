@@ -1,12 +1,15 @@
 # Specification
 
 ## Summary
-**Goal:** Add a clearly visible “Home” navigation option that returns users to the start of the guided chat experience and orients them back at the top of the page without reloading or adding routes.
+**Goal:** Update Pegasus Gifting to a premium, red-accented B2B guided chat experience that qualifies leads in 2–3 steps and hands off to WhatsApp naturally.
 
 **Planned changes:**
-- Add a navigation/menu area (or extend the existing one) to include an option labeled exactly “Home”.
-- Implement the “Home” action to reset the guided flow back to the initial welcome step (equivalent to start over) without a page reload or new routes.
-- On “Home” click/activation, scroll the main view back to the top of the app (hero/header/top of content) for orientation.
-- Ensure the “Home” control is keyboard accessible and uses appropriate accessible semantics/labeling (e.g., button or link).
+- Update the visual theme to a light background with consistent bold red primary accents (CTAs, focus rings, borders, and chat highlights), removing any blue/purple-dominant primary accents.
+- Add a premium B2B header featuring the brand name “PEGASUS GIFTING” alongside a red Pegasus logo, responsive on mobile and desktop.
+- Reshape the homepage into a guided, chat-led flow (quick-reply buttons/cards) rather than a long static page.
+- Implement minimal branching: intent selection (Bulk vs Single/few vs Unsure/Exploration) → second question (quantity range or purpose/occasion) → WhatsApp handoff only after the second answer.
+- Add an Unsure/Exploration path with a short “How It Works” explanation in-chat, plus a view/download option for the Master Catalogue PDF before suggesting WhatsApp.
+- Highlight curated gift categories as selectable cards within the flow (and/or as an optional exploration step) while removing/avoiding any pricing, delivery promises/timelines, or vendor/supplier details from UI copy.
+- Update WhatsApp handoff UX/copy to “Speak to our team” and prefill the WhatsApp message with the user’s selections (intent + quantity/purpose + category if chosen).
 
-**User-visible outcome:** Users can select “Home” at any time to restart the guided experience at the welcome step and be returned to the top of the page in the same single-page flow.
+**User-visible outcome:** Visitors land on a premium red-themed Pegasus Gifting site that guides them through a short conversational qualification flow and then (optionally) continues to WhatsApp with a prefilled summary of their choices, with catalogue access available for exploration.
