@@ -1,11 +1,10 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 3,
+  "projectStateVersion": 5,
   "summary": "Modern premium corporate gifting website for Pegasus Gifting with a guided chat-like experience that helps users self-identify needs and explore gift categories step-by-step, using gold/white branding and conversion-focused CTAs (WhatsApp + catalogue download) for bulk and single-order leads.",
   "architectural_notes": [],
   "known_issues": [],
   "isFixRequest": false,
-  "imageRequirements": "## Required Images\n- Premium minimal hero background with abstract gift/ribbon motif in gold-on-white, subtle texture (pegasus-hero-bg.dim_1600x900.png)\n- Minimal gold line-icon set for 6 gifting categories (one sheet/grid), consistent stroke style on transparent background (pegasus-category-icons.dim_1200x800.png)\n- Simple premium Pegasus Gifting wordmark-style logo in gold on transparent background (pegasus-logo.dim_800x240.png)",
   "existing_features": [
     {
       "id": "feature-create-a-guided-chat-like-landing-experience-for-pegasus-gifting-instead-of-a-static-marketing-page-that-steps-the-user-through-self-identifying-their-gifting-needs-and-progressively-reveals-the-next-options",
@@ -54,6 +53,14 @@
         "REQ-6"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-add-a-navigation-menu-option-labeled-home-to-the-pegasus-gifting-site-interface-the-home-action-must-return-the-user-to-the-start-of-the-guided-chat-experience-welcome-step-and-bring-the-view-back-to-the-top-of-the-main-content-without-requiring-a-page-reload-or-adding-new-routes",
+      "title": "Add a navigation menu option labeled \"Home\" to the Pegasus Gifting site interface. The Home action must return the user to the start of the guided chat experience (welcome step) and bring the view back to the top of the main content without requiring a page reload or adding new routes.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -78,6 +85,12 @@
     {
       "id": "AR-4",
       "summary": "Clear conversion CTAs including WhatsApp contact and catalogue download for bulk and single-order leads.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Add a navigation menu option labeled “Home” to the Pegasus Gifting site interface.",
       "reqIds": [],
       "status": "pending"
     }

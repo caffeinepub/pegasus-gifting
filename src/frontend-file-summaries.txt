@@ -9,7 +9,7 @@
   "frontend/src/features/guided-flow/CategoryCards.tsx": "Grid of interactive category cards with hover effects, animations, and keyboard accessibility for category exploration.",
   "frontend/src/features/guided-flow/CTAButtons.tsx": "Conversion-focused CTA buttons for WhatsApp contact and catalogue download with premium styling and icons.",
   "frontend/src/features/guided-flow/GuidedFlow.tsx": "Main guided flow container orchestrating the chat experience, managing scroll behavior, and rendering interactive elements based on current step.",
-  "frontend/src/App.tsx": "Root application component with premium hero header, main chat area, and footer with social links and attribution.",
+  "frontend/src/App.tsx": "Root application component with premium hero header including a Home navigation button that resets the guided flow and scrolls to top, main chat area with key-based remounting, and footer with social links and attribution.",
   "frontend/src/hooks/useQueries.ts": "Placeholder file for future backend integration queries using React Query.",
   "frontend/public/assets/pegasus-catalogue.pdf": "Sample PDF catalogue file for download functionality."
 }

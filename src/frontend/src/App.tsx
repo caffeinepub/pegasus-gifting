@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { GuidedFlow } from './features/guided-flow/GuidedFlow';
 import { config } from './config/pegasus';
 import { SiX, SiFacebook, SiLinkedin, SiInstagram } from 'react-icons/si';
-import { Heart } from 'lucide-react';
+import { Heart, Home } from 'lucide-react';
 
 function App() {
+  const [flowKey, setFlowKey] = useState(0);
+
+  const handleHomeClick = () => {
+    // Reset the guided flow by changing the key (forces remount)
+    setFlowKey(prev => prev + 1);
+    
+    // Scroll to the top smoothly
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-background">
       {/* Hero Header */}
@@ -18,11 +28,24 @@ function App() {
         </div>
         <div className="relative container mx-auto px-4 py-8 md:py-12">
           <div className="flex flex-col items-center text-center space-y-4">
-            <img
-              src="/assets/generated/pegasus-logo.dim_800x240.png"
-              alt="Pegasus Gifting"
-              className="h-16 md:h-20 w-auto"
-            />
+            <div className="flex items-center justify-between w-full max-w-4xl">
+              <div className="flex-1" />
+              <img
+                src="/assets/generated/pegasus-logo.dim_800x240.png"
+                alt="Pegasus Gifting"
+                className="h-16 md:h-20 w-auto"
+              />
+              <div className="flex-1 flex justify-end">
+                <button
+                  onClick={handleHomeClick}
+                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors rounded-lg hover:bg-secondary/50"
+                  aria-label="Go to home and restart"
+                >
+                  <Home className="w-5 h-5" />
+                  <span className="hidden sm:inline">Home</span>
+                </button>
+              </div>
+            </div>
             <div>
               <h1 className="text-2xl md:text-3xl font-display font-bold text-foreground">
                 {config.company.tagline}
@@ -38,7 +61,7 @@ function App() {
       {/* Main Chat Area */}
       <main className="flex-1 container mx-auto max-w-4xl flex flex-col">
         <div className="flex-1 bg-card/50 backdrop-blur-sm rounded-t-3xl md:rounded-3xl my-4 md:my-8 shadow-gold-lg border border-border overflow-hidden">
-          <GuidedFlow />
+          <GuidedFlow key={flowKey} />
         </div>
       </main>
 

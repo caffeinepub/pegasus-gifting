@@ -1,14 +1,12 @@
 # Specification
 
 ## Summary
-**Goal:** Create a modern, premium Pegasus Gifting homepage as a guided, chat-style flow that helps users identify corporate gifting needs step-by-step and convert via WhatsApp or catalogue download.
+**Goal:** Add a clearly visible “Home” navigation option that returns users to the start of the guided chat experience and orients them back at the top of the page without reloading or adding routes.
 
 **Planned changes:**
-- Build a conversational, step-by-step chat UI landing flow with guided quick-reply choices, clear progression, and the ability to restart and revise earlier answers.
-- Apply a consistent premium gold-and-white visual system (typography, spacing, shadows, components) across all UI states and ensure responsive mobile/desktop layout.
-- Add interactive, accessible category exploration via premium category cards (with icons/visuals) that drive the next step in the flow (subcategory prompt/preview).
-- Add conversion-focused CTAs surfaced at relevant points: configurable WhatsApp link and catalogue download from static assets/URL, including a bulk vs single-order intent branch.
-- Incorporate subtle, purposeful micro-interactions/animations (e.g., message reveal, card entrance) to reinforce a “guided concierge” feel.
-- Add and render static generated images from `frontend/public/assets/generated/` for hero/brand area and category visuals (no backend image handling).
+- Add a navigation/menu area (or extend the existing one) to include an option labeled exactly “Home”.
+- Implement the “Home” action to reset the guided flow back to the initial welcome step (equivalent to start over) without a page reload or new routes.
+- On “Home” click/activation, scroll the main view back to the top of the app (hero/header/top of content) for orientation.
+- Ensure the “Home” control is keyboard accessible and uses appropriate accessible semantics/labeling (e.g., button or link).
 
-**User-visible outcome:** Users experience a guided chat-style homepage that helps them choose gifting categories and intent (bulk vs single), then quickly contact via WhatsApp or download the catalogue, all within a premium gold-and-white branded UI.
+**User-visible outcome:** Users can select “Home” at any time to restart the guided experience at the welcome step and be returned to the top of the page in the same single-page flow.

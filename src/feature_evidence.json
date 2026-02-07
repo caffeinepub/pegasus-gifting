@@ -2,15 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-create-a-guided-chat-like-landing-experience-for-pegasus-gifting-instead-of-a-static-marketing-page-that-steps-the-user-through-self-identifying-their-gifting-needs-and-progressively-reveals-the-next-options",
-      "featureTitle": "Create a guided, chat-like landing experience for Pegasus Gifting (instead of a static marketing page) that steps the user through self-identifying their gifting needs and progressively reveals the next options.",
+      "featureId": "feature-add-a-navigation-menu-option-labeled-home-to-the-pegasus-gifting-site-interface-the-home-action-must-return-the-user-to-the-start-of-the-guided-chat-experience-welcome-step-and-bring-the-view-back-to-the-top-of-the-main-content-without-requiring-a-page-reload-or-adding-new-routes",
+      "featureTitle": "Add a navigation menu option labeled \"Home\" to the Pegasus Gifting site interface. The Home action must return the user to the start of the guided chat experience (welcome step) and bring the view back to the top of the main content without requiring a page reload or adding new routes.",
       "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/features/guided-flow/ChatMessageList.tsx",
-        "frontend/src/features/guided-flow/GuidedFlow.tsx",
-        "frontend/src/features/guided-flow/QuickReplies.tsx",
-        "frontend/src/features/guided-flow/types.ts",
-        "frontend/src/features/guided-flow/useGuidedFlow.ts"
+        "frontend/src/App.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -20,105 +15,7 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-1"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-implement-a-clean-premium-gold-and-white-brand-system-across-the-website-colors-typography-spacing-shadows-components-and-apply-it-consistently-to-all-ui-states-default-hover-active-disabled",
-      "featureTitle": "Implement a clean, premium gold-and-white brand system across the website (colors, typography, spacing, shadows, components) and apply it consistently to all UI states (default, hover, active, disabled).",
-      "files": [
-        "frontend/src/features/guided-flow/GuidedFlow.tsx",
-        "frontend/src/index.css",
-        "frontend/tailwind.config.js"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-2"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-add-interactive-category-exploration-using-premium-styled-category-cards-that-appear-as-part-of-the-guided-flow-and-allow-users-to-drill-into-categories-step-by-step",
-      "featureTitle": "Add interactive category exploration using premium-styled category cards that appear as part of the guided flow and allow users to drill into categories step-by-step.",
-      "files": [
-        "frontend/src/config/pegasus.ts",
-        "frontend/src/features/guided-flow/CategoryCards.tsx",
-        "frontend/src/features/guided-flow/GuidedFlow.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-3"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-add-conversion-focused-ctas-that-are-always-easy-to-find-at-the-appropriate-points-in-the-flow-1-whatsapp-contact-and-2-catalogue-download-supporting-both-bulk-and-single-order-lead-intent",
-      "featureTitle": "Add conversion-focused CTAs that are always easy to find at the appropriate points in the flow: (1) WhatsApp contact and (2) catalogue download, supporting both bulk and single-order lead intent.",
-      "files": [
-        "frontend/src/config/pegasus.ts",
-        "frontend/src/features/guided-flow/GuidedFlow.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-4"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-add-a-coherent-modern-premium-visual-theme-beyond-color-alone-layout-spacing-micro-interactions-subtle-animations-that-reinforces-a-guided-concierge-feel-and-remains-consistent-across-the-entire-site",
-      "featureTitle": "Add a coherent, modern premium visual theme beyond color alone (layout, spacing, micro-interactions, subtle animations) that reinforces a “guided concierge” feel and remains consistent across the entire site.",
-      "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/features/guided-flow/CategoryCards.tsx",
-        "frontend/src/features/guided-flow/ChatMessageList.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-5"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-add-required-static-generated-images-to-the-project-under-frontend-public-assets-generated-and-render-them-in-the-ui-hero-brand-area-category-cards-without-routing-images-through-the-backend",
-      "featureTitle": "Add required static generated images to the project under `frontend/public/assets/generated/` and render them in the UI (hero/brand area + category cards) without routing images through the backend.",
-      "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/features/guided-flow/CategoryCards.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-6"
+        "REQ-7"
       ],
       "confidence": "high"
     }
