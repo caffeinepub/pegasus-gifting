@@ -1,15 +1,11 @@
 # Specification
 
 ## Summary
-**Goal:** Update Pegasus Gifting to a premium, red-accented B2B guided chat experience that qualifies leads in 2–3 steps and hands off to WhatsApp naturally.
+**Goal:** Show a proper image for the “Combo Gift Sets” card in the Curated Gift Categories section instead of the SafeImage fallback UI.
 
 **Planned changes:**
-- Update the visual theme to a light background with consistent bold red primary accents (CTAs, focus rings, borders, and chat highlights), removing any blue/purple-dominant primary accents.
-- Add a premium B2B header featuring the brand name “PEGASUS GIFTING” alongside a red Pegasus logo, responsive on mobile and desktop.
-- Reshape the homepage into a guided, chat-led flow (quick-reply buttons/cards) rather than a long static page.
-- Implement minimal branching: intent selection (Bulk vs Single/few vs Unsure/Exploration) → second question (quantity range or purpose/occasion) → WhatsApp handoff only after the second answer.
-- Add an Unsure/Exploration path with a short “How It Works” explanation in-chat, plus a view/download option for the Master Catalogue PDF before suggesting WhatsApp.
-- Highlight curated gift categories as selectable cards within the flow (and/or as an optional exploration step) while removing/avoiding any pricing, delivery promises/timelines, or vendor/supplier details from UI copy.
-- Update WhatsApp handoff UX/copy to “Speak to our team” and prefill the WhatsApp message with the user’s selections (intent + quantity/purpose + category if chosen).
+- Add/ensure the static asset exists at `frontend/public/assets/generated/category-combo-gift-sets.dim_800x600.png`.
+- Ensure the “Combo Gift Sets” curated category card loads the image via the existing `getCategoryImagePath('combo-gift-sets')` path so the SafeImage fallback container/SVG does not render for that card.
+- Limit any code changes strictly to the selected card image area/fallback elements within the Curated Gift Categories section; do not modify other cards/sections.
 
-**User-visible outcome:** Visitors land on a premium red-themed Pegasus Gifting site that guides them through a short conversational qualification flow and then (optionally) continues to WhatsApp with a prefilled summary of their choices, with catalogue access available for exploration.
+**User-visible outcome:** On the homepage, the “Combo Gift Sets” card in the Curated Gift Categories grid displays its category image (no fallback UI shown for that card).

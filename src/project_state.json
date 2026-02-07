@@ -1,112 +1,23 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "Interactive, chat-led corporate gifting website for Pegasus Gifting with premium B2B styling and a guided 2–3 step qualification flow that hands off to WhatsApp.",
-  "architectural_notes": [
-    "Conversational, card-based UI with minimal text and smooth transitions; avoid traditional static-site navigation.",
-    "Do not display pricing, delivery promises, or vendor details anywhere in the experience."
-  ],
+  "summary": "New project",
+  "architectural_notes": [],
   "known_issues": [],
   "isFixRequest": false,
-  "imageRequirements": "## Required Images\n- Red Pegasus logo mark on transparent background (pegasus-logo-red.dim_512x512.png)\n- Red Pegasus favicon icon on transparent background (pegasus-favicon-red.dim_64x64.png)",
+  "imageRequirements": "## Required Images\n- Clean category image showing curated combo gift sets (gift hamper/assortment) on a neutral background (category-combo-gift-sets.dim_800x600.png)",
   "existing_features": [
     {
-      "id": "feature-update-the-site-s-visual-design-to-a-premium-b2b-look-with-a-light-background-bold-red-primary-accents-and-clean-white-contrast-accents-ensure-all-primary-ctas-borders-rings-and-chat-ui-highlights-use-the-red-primary-color-consistently",
-      "title": "Update the site’s visual design to a premium B2B look with a light background, bold red primary accents, and clean white contrast accents; ensure all primary CTAs, borders/rings, and chat UI highlights use the red primary color consistently.",
+      "id": "feature-add-and-serve-a-new-static-category-image-for-the-combo-gift-sets-card-so-that-the-card-shows-the-image-instead-of-the-safeimage-fallback-ui-in-the-curatedcategoriessection-this-must-affect-only-the-selected-card-image-area-fallback-elements-the-safeimage-fallback-container-and-its-svg-within-the-curated-gift-categories-section",
+      "title": "Add and serve a new static category image for the “Combo Gift Sets” card so that the card shows the image instead of the SafeImage fallback UI in the CuratedCategoriesSection. This must affect only the selected card image area/fallback elements (the SafeImage fallback container and its SVG) within the Curated Gift Categories section.",
       "reqIds": [
         "REQ-1"
       ],
       "version": 1
-    },
-    {
-      "id": "feature-add-a-header-that-clearly-displays-the-brand-name-pegasus-gifting-alongside-a-red-pegasus-logo-and-keep-the-overall-header-styling-premium-and-professional-for-b2b-clients",
-      "title": "Add a header that clearly displays the brand name “PEGASUS GIFTING” alongside a red Pegasus logo, and keep the overall header styling premium and professional for B2B clients.",
-      "reqIds": [
-        "REQ-2"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-make-the-homepage-behave-as-a-guided-chat-led-experience-not-a-traditional-long-static-page-that-asks-2-3-click-based-questions-to-qualify-intent-before-offering-a-whatsapp-handoff",
-      "title": "Make the homepage behave as a guided, chat-led experience (not a traditional long static page) that asks 2–3 click-based questions to qualify intent before offering a WhatsApp handoff.",
-      "reqIds": [
-        "REQ-3"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-implement-a-minimal-branching-flow-first-ask-what-the-user-is-looking-for-bulk-corporate-gifting-vs-single-few-gifts-vs-exploration-not-sure-then-ask-either-quantity-range-for-bulk-or-purpose-occasion-for-single-few-then-show-a-whatsapp-handoff-only-after-the-second-question-is-answered",
-      "title": "Implement a minimal branching flow: first ask what the user is looking for (Bulk corporate gifting vs Single/few gifts vs Exploration/Not sure), then ask either quantity range (for bulk) or purpose/occasion (for single/few), then show a WhatsApp handoff only after the second question is answered.",
-      "reqIds": [
-        "REQ-4"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-an-unsure-exploration-path-that-shows-a-short-how-it-works-explanation-inside-the-guided-conversation-and-offers-an-option-to-view-download-the-master-catalogue-pdf-before-suggesting-whatsapp",
-      "title": "Add an “Unsure / Exploration” path that shows a short “How It Works” explanation inside the guided conversation and offers an option to view/download the Master Catalogue PDF before suggesting WhatsApp.",
-      "reqIds": [
-        "REQ-5"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-ensure-curated-gift-categories-are-highlighted-as-selectable-cards-within-the-guided-flow-and-or-as-an-optional-exploration-step-to-support-both-bulk-and-single-orders-without-showing-pricing-delivery-promises-or-vendor-details",
-      "title": "Ensure curated gift categories are highlighted as selectable cards within the guided flow (and/or as an optional exploration step) to support both bulk and single orders without showing pricing, delivery promises, or vendor details.",
-      "reqIds": [
-        "REQ-6"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-update-whatsapp-handoff-ux-and-copy-so-it-feels-natural-and-intentional-label-it-as-speak-to-our-team-not-a-salesy-push-include-clear-but-non-pushy-ctas-and-prefill-the-whatsapp-message-with-the-user-s-selected-path-answers-intent-quantity-purpose-category-if-chosen",
-      "title": "Update WhatsApp handoff UX and copy so it feels natural and intentional: label it as “Speak to our team” (not a salesy push), include clear but non-pushy CTAs, and prefill the WhatsApp message with the user’s selected path answers (intent + quantity/purpose + category if chosen).",
-      "reqIds": [
-        "REQ-7"
-      ],
-      "version": 1
     }
   ],
-  "new_feature_requests": [
-    {
-      "id": "AR-1",
-      "summary": "Create Pegasus Gifting branded website UI (bold red theme on light background, white accents, red Pegasus logo) with header displaying 'PEGASUS GIFTING' in a premium B2B style.",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-2",
-      "summary": "Implement guided, chat-led interaction (card-based, smooth transitions) with 2–3 click-based questions to qualify intent (bulk corporate gifting vs single/few gifts vs exploration).",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-3",
-      "summary": "Add smart branching flow: ask intent first, then ask quantity range or purpose as appropriate, and only then offer WhatsApp handoff once interest is gauged.",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-4",
-      "summary": "Provide an 'Unsure' path with a short 'How It Works' explanation and option to view/download a Master Catalogue PDF before suggesting WhatsApp.",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-5",
-      "summary": "Support both bulk and single orders and highlight curated gift categories with clear but non-pushy CTAs.",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-6",
-      "summary": "Implement WhatsApp handoff UX positioned as 'Speak to our team' (natural, intentional, never forced).",
-      "reqIds": [],
-      "status": "pending"
-    }
-  ],
-  "gameProjectType": "none",
-  "projectName": "Pegasus Gifting",
+  "new_feature_requests": [],
+  "projectName": "Add Combo Gift Sets category image to curated categories section",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

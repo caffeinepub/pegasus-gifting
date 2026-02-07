@@ -1,7 +1,11 @@
 import React from 'react';
 import { BrandHeader } from '@/components/BrandHeader';
-import { GuidedFlow } from '@/features/guided-flow/GuidedFlow';
-import { Card } from '@/components/ui/card';
+import { HeroSection } from '@/components/home/HeroSection';
+import { CuratedCategoriesSection } from '@/components/home/CuratedCategoriesSection';
+import { HowItWorksSection } from '@/components/home/HowItWorksSection';
+import { MasterCatalogueSection } from '@/components/home/MasterCatalogueSection';
+import { WhatsAppCTASection } from '@/components/home/WhatsAppCTASection';
+import { GuidedFlowPanel } from '@/components/home/GuidedFlowPanel';
 import { Heart } from 'lucide-react';
 
 export function HomePage() {
@@ -9,17 +13,15 @@ export function HomePage() {
     <div className="min-h-screen bg-background flex flex-col">
       <BrandHeader />
       
-      <main className="flex-1 flex items-center justify-center py-8 px-4">
-        <div className="w-full max-w-4xl">
-          <Card className="border-2 border-border shadow-red-lg overflow-hidden">
-            <div className="h-[600px] md:h-[700px]">
-              <GuidedFlow />
-            </div>
-          </Card>
-        </div>
+      <main className="flex-1">
+        <HeroSection />
+        <CuratedCategoriesSection />
+        <HowItWorksSection />
+        <MasterCatalogueSection />
+        <WhatsAppCTASection />
       </main>
 
-      <footer className="py-6 px-4 border-t border-border bg-secondary/20">
+      <footer className="py-8 px-4 border-t border-border bg-secondary/20">
         <div className="container mx-auto text-center">
           <p className="text-sm text-muted-foreground">
             © 2026. Built with <Heart className="inline w-4 h-4 text-primary fill-primary" /> using{' '}
@@ -34,6 +36,8 @@ export function HomePage() {
           </p>
         </div>
       </footer>
+
+      <GuidedFlowPanel />
     </div>
   );
 }

@@ -1,115 +1,24 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-07T08:11:01.211Z",
+  "generatedAt": "2026-02-07T09:06:21.219Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 7,
-    "implemented": 7,
+    "total": 1,
+    "implemented": 1,
     "items": [
       {
         "id": "REQ-1",
-        "summary": "Update the site’s visual design to a premium B2B look with a light background, bold red primary accents, and clean white contrast accents; ensure all primary CTAs, borders/rings, and chat UI highlights use the red primary color consistently.",
+        "summary": "Add and serve a new static category image for the “Combo Gift Sets” card so that the card shows the image instead of the SafeImage fallback UI in the CuratedCategoriesSection. This must affect only the selected card image area/fallback elements (the SafeImage fallback container and its SVG) within the Curated Gift Categories section.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/index.css",
-          "frontend/tailwind.config.js",
-          "frontend/src/features/guided-flow/ChatMessageList.tsx"
+          "frontend/public/assets/generated/category-combo-gift-sets.dim_800x600.png"
         ],
         "matchedFiles": [
-          "frontend/src/index.css",
-          "frontend/tailwind.config.js",
-          "frontend/src/features/guided-flow/ChatMessageList.tsx"
-        ]
-      },
-      {
-        "id": "REQ-2",
-        "summary": "Add a header that clearly displays the brand name “PEGASUS GIFTING” alongside a red Pegasus logo, and keep the overall header styling premium and professional for B2B clients.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/public/assets/generated/pegasus-logo-red.dim_512x512.png",
-          "frontend/src/components/BrandHeader.tsx",
-          "frontend/src/pages/HomePage.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/public/assets/generated/pegasus-logo-red.dim_512x512.png",
-          "frontend/src/components/BrandHeader.tsx",
-          "frontend/src/pages/HomePage.tsx"
-        ]
-      },
-      {
-        "id": "REQ-3",
-        "summary": "Make the homepage behave as a guided, chat-led experience (not a traditional long static page) that asks 2–3 click-based questions to qualify intent before offering a WhatsApp handoff.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/pages/HomePage.tsx",
-          "frontend/src/features/guided-flow/GuidedFlow.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/pages/HomePage.tsx",
-          "frontend/src/features/guided-flow/GuidedFlow.tsx"
-        ]
-      },
-      {
-        "id": "REQ-4",
-        "summary": "Implement a minimal branching flow: first ask what the user is looking for (Bulk corporate gifting vs Single/few gifts vs Exploration/Not sure), then ask either quantity range (for bulk) or purpose/occasion (for single/few), then show a WhatsApp handoff only after the second question is answered.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/features/guided-flow/types.ts",
-          "frontend/src/features/guided-flow/useGuidedFlow.ts",
-          "frontend/src/features/guided-flow/QuickReplies.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/features/guided-flow/types.ts",
-          "frontend/src/features/guided-flow/useGuidedFlow.ts",
-          "frontend/src/features/guided-flow/QuickReplies.tsx"
-        ]
-      },
-      {
-        "id": "REQ-5",
-        "summary": "Add an “Unsure / Exploration” path that shows a short “How It Works” explanation inside the guided conversation and offers an option to view/download the Master Catalogue PDF before suggesting WhatsApp.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/public/assets/pegasus-catalogue.pdf",
-          "frontend/src/features/guided-flow/useGuidedFlow.ts",
-          "frontend/src/features/guided-flow/CTAButtons.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/features/guided-flow/useGuidedFlow.ts",
-          "frontend/src/features/guided-flow/CTAButtons.tsx"
-        ]
-      },
-      {
-        "id": "REQ-6",
-        "summary": "Ensure curated gift categories are highlighted as selectable cards within the guided flow (and/or as an optional exploration step) to support both bulk and single orders without showing pricing, delivery promises, or vendor details.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/config/pegasus.ts",
-          "frontend/src/features/guided-flow/CategoryCards.tsx",
-          "frontend/src/pages/HomePage.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/config/pegasus.ts",
-          "frontend/src/features/guided-flow/CategoryCards.tsx",
-          "frontend/src/pages/HomePage.tsx"
-        ]
-      },
-      {
-        "id": "REQ-7",
-        "summary": "Update WhatsApp handoff UX and copy so it feels natural and intentional: label it as “Speak to our team” (not a salesy push), include clear but non-pushy CTAs, and prefill the WhatsApp message with the user’s selected path answers (intent + quantity/purpose + category if chosen).",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/config/pegasus.ts",
-          "frontend/src/features/guided-flow/useGuidedFlow.ts",
-          "frontend/src/features/guided-flow/CTAButtons.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/config/pegasus.ts",
-          "frontend/src/features/guided-flow/useGuidedFlow.ts",
-          "frontend/src/features/guided-flow/CTAButtons.tsx"
+          "frontend/public/assets/generated/category-combo-gift-sets.dim_800x600.png"
         ]
       }
     ]
@@ -117,22 +26,8 @@
   "changedFiles": [
     "build-request.json",
     "feature_evidence.json",
-    "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/public/assets/generated/pegasus-favicon-red.dim_64x64.png",
-    "frontend/public/assets/generated/pegasus-logo-red.dim_512x512.png",
-    "frontend/src/components/BrandHeader.tsx",
-    "frontend/src/config/pegasus.ts",
-    "frontend/src/features/guided-flow/CTAButtons.tsx",
-    "frontend/src/features/guided-flow/CategoryCards.tsx",
-    "frontend/src/features/guided-flow/ChatMessageList.tsx",
-    "frontend/src/features/guided-flow/GuidedFlow.tsx",
-    "frontend/src/features/guided-flow/QuickReplies.tsx",
-    "frontend/src/features/guided-flow/types.ts",
-    "frontend/src/features/guided-flow/useGuidedFlow.ts",
-    "frontend/src/index.css",
-    "frontend/src/pages/HomePage.tsx",
-    "frontend/tailwind.config.js",
+    "frontend/public/assets/generated/category-combo-gift-sets.dim_800x600.png",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

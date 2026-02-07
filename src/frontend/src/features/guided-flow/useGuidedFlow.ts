@@ -4,20 +4,20 @@ import { type FlowState, type StepId, type Answer, type Message, type Step } fro
 const steps: Record<StepId, Step> = {
   welcome: {
     id: 'welcome',
-    systemMessage: 'Welcome to Pegasus Gifting! 🎁 I\'m here to help you find the perfect corporate gifts.',
+    systemMessage: 'Welcome to Pegasus Gifting. I\'m here to help you find the perfect corporate gifts.',
     quickReplies: [
-      { id: 'start', label: 'Let\'s Begin', value: 'start' }
+      { id: 'start', label: 'Get Started', value: 'start' }
     ]
   },
   intent: {
     id: 'intent',
-    systemMessage: 'What are you looking for today?',
+    systemMessage: 'What brings you here today?',
     quickReplies: [
       { 
         id: 'bulk', 
         label: 'Bulk Corporate Gifting', 
         value: 'bulk',
-        description: 'Large orders for teams, events, or client appreciation'
+        description: 'Large orders for teams, events, or clients'
       },
       { 
         id: 'single', 
@@ -29,13 +29,13 @@ const steps: Record<StepId, Step> = {
         id: 'unsure', 
         label: 'Not Sure / Exploring', 
         value: 'unsure',
-        description: 'Learn more about our process'
+        description: 'Learn about our process'
       }
     ]
   },
   'bulk-quantity': {
     id: 'bulk-quantity',
-    systemMessage: 'Great! How many units are you looking for?',
+    systemMessage: 'How many units are you considering?',
     quickReplies: [
       { id: 'q1', label: '10-50 units', value: '10-50' },
       { id: 'q2', label: '51-100 units', value: '51-100' },
@@ -45,7 +45,7 @@ const steps: Record<StepId, Step> = {
   },
   'single-purpose': {
     id: 'single-purpose',
-    systemMessage: 'Perfect! What\'s the occasion or purpose?',
+    systemMessage: 'What\'s the occasion?',
     quickReplies: [
       { id: 'p1', label: 'Client Appreciation', value: 'client-appreciation' },
       { id: 'p2', label: 'Employee Recognition', value: 'employee-recognition' },
@@ -55,22 +55,22 @@ const steps: Record<StepId, Step> = {
   },
   'unsure-education': {
     id: 'unsure-education',
-    systemMessage: 'No problem! Here\'s how we work:\n\n1️⃣ Share your requirement\n2️⃣ We curate suitable options\n3️⃣ You approve branding & details\n4️⃣ We handle production & delivery\n\nWould you like to explore our catalogue or speak with our team?',
+    systemMessage: 'Here\'s how we work:\n\n1. Share your requirement\n2. We curate suitable options\n3. You approve branding & details\n4. We handle production & fulfillment\n\nWould you like to explore our catalogue or speak with our team?',
     showCatalogue: true
   },
   category: {
     id: 'category',
-    systemMessage: 'Excellent! Which category interests you?',
+    systemMessage: 'Which category interests you?',
     showCategories: true
   },
   contact: {
     id: 'contact',
-    systemMessage: 'Perfect! I have all the details. Let\'s connect to discuss your requirements.',
+    systemMessage: 'Perfect. Let\'s connect to discuss your requirements in detail.',
     showCTAs: true
   },
   'catalogue-view': {
     id: 'catalogue-view',
-    systemMessage: 'You can view our full catalogue below. When you\'re ready, our team is here to help!',
+    systemMessage: 'You can view our full catalogue below. Our team is ready to assist when you\'re ready.',
     showCTAs: true
   }
 };
@@ -108,7 +108,6 @@ export function useGuidedFlow() {
     let nextStepId: StepId | null = null;
     let newIntent = state.intent;
 
-    // Determine next step based on current step and answer
     if (currentStepId === 'welcome') {
       nextStepId = 'intent';
     } else if (currentStepId === 'intent') {

@@ -44,6 +44,12 @@ export const categories: Category[] = [
   }
 ];
 
+export const assets = {
+  logo: '/assets/generated/pegasus-logo-red.dim_512x512.png',
+  heroBanner: '/assets/generated/hero-banner.dim_1600x700.png',
+  heroProduct: '/assets/generated/pegasus-home-hero-product.dim_1400x900.png',
+};
+
 export const config = {
   whatsapp: {
     number: '919876543210',
@@ -60,6 +66,10 @@ export const config = {
   }
 };
 
+export function getCategoryImagePath(categoryId: string): string {
+  return `/assets/generated/category-${categoryId}.dim_800x600.png`;
+}
+
 export function getWhatsAppLink(customMessage?: string): string {
   const { number, defaultMessage } = config.whatsapp;
   const message = customMessage || defaultMessage;
@@ -75,7 +85,7 @@ export function buildWhatsAppMessage(
   
   if (secondAnswer) {
     if (intent === 'bulk corporate gifting') {
-      message += ` (${secondAnswer} units)`;
+      message += ` (${secondAnswer})`;
     } else if (intent === 'single/few gifts') {
       message += ` for ${secondAnswer}`;
     }

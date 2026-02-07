@@ -1,155 +1,40 @@
 {
   "kind": "build_request",
-  "title": "Pegasus Gifting red-themed chat-led lead qualification flow with natural WhatsApp handoff",
+  "title": "Add Combo Gift Sets category image to curated categories section",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Update the site’s visual design to a premium B2B look with a light background, bold red primary accents, and clean white contrast accents; ensure all primary CTAs, borders/rings, and chat UI highlights use the red primary color consistently.",
+      "text": "Add and serve a new static category image for the “Combo Gift Sets” card so that the card shows the image instead of the SafeImage fallback UI in the CuratedCategoriesSection. This must affect only the selected card image area/fallback elements (the SafeImage fallback container and its SVG) within the Curated Gift Categories section.",
       "target": "frontend",
       "source": {
         "messageIds": [
           "msg-1"
         ],
         "quotes": [
-          "Build an interactive, chat-led corporate gifting website for Pegasus Gifting with a bold red color theme which has a light background and a red Pegasus logo, using clean white accents for contrast."
+          "i want an image of combo gift sets,"
         ]
       },
       "acceptanceCriteria": [
-        "Tailwind theme variables in frontend/src/index.css use a red primary palette (replacing the current gold palette) while keeping a light background.",
-        "Primary buttons, focus rings, and key accents render in red across HomePage and guided flow components.",
-        "No blue/purple dominant accents appear in the primary UI."
-      ]
-    },
-    {
-      "id": "REQ-2",
-      "text": "Add a header that clearly displays the brand name “PEGASUS GIFTING” alongside a red Pegasus logo, and keep the overall header styling premium and professional for B2B clients.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-1"
-        ],
-        "quotes": [
-          "The header must clearly display PEGASUS GIFTING as the brand name, with a premium, professional visual style suitable for B2B clients.",
-          "...a red Pegasus logo..."
-        ]
-      },
-      "acceptanceCriteria": [
-        "A top header is visible on the main page with the text “PEGASUS GIFTING”.",
-        "The header includes the red Pegasus logo asset and maintains good contrast on the light background.",
-        "Header remains readable and well-aligned on mobile and desktop."
-      ]
-    },
-    {
-      "id": "REQ-3",
-      "text": "Make the homepage behave as a guided, chat-led experience (not a traditional long static page) that asks 2–3 click-based questions to qualify intent before offering a WhatsApp handoff.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-1"
-        ],
-        "quotes": [
-          "The website should not behave like a traditional static site; it should guide users through 2–3 simple, click-based questions... before directing them to WhatsApp.",
-          "The final output should feel like a guided conversation that qualifies leads... and converts serious users to WhatsApp."
-        ]
-      },
-      "acceptanceCriteria": [
-        "The primary interaction on landing is the guided chat flow (with quick-reply style buttons/cards), not a scroll-first multi-section layout.",
-        "Users can complete a qualification path in 2–3 selections before seeing the WhatsApp CTA.",
-        "The experience uses card-based interactions and smooth transitions (existing fade/slide animations are acceptable)."
-      ]
-    },
-    {
-      "id": "REQ-4",
-      "text": "Implement a minimal branching flow: first ask what the user is looking for (Bulk corporate gifting vs Single/few gifts vs Exploration/Not sure), then ask either quantity range (for bulk) or purpose/occasion (for single/few), then show a WhatsApp handoff only after the second question is answered.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-1"
-        ],
-        "quotes": [
-          "first ask what the user is looking for, then ask either quantity range or purpose, and finally offer a WhatsApp handoff only after interest is gauged."
-        ]
-      },
-      "acceptanceCriteria": [
-        "The first question includes options for bulk, single/few, and an exploration/not-sure path.",
-        "Bulk path: user selects a quantity range as the second step before WhatsApp is offered.",
-        "Single/few path: user selects a purpose/occasion as the second step before WhatsApp is offered.",
-        "WhatsApp CTA does not appear before the second question is answered."
-      ]
-    },
-    {
-      "id": "REQ-5",
-      "text": "Add an “Unsure / Exploration” path that shows a short “How It Works” explanation inside the guided conversation and offers an option to view/download the Master Catalogue PDF before suggesting WhatsApp.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-1"
-        ],
-        "quotes": [
-          "Users who are unsure should be educated through a short “How It Works” explanation and offered the option to explore a Master Catalogue PDF before being pushed to WhatsApp."
-        ]
-      },
-      "acceptanceCriteria": [
-        "In the unsure/exploration path, the guided chat presents a short “How It Works” explanation as a system message (or short sequence of messages).",
-        "A catalogue action (view/download) is presented prior to any WhatsApp CTA for this path.",
-        "WhatsApp remains optional and appears as a next step (not forced) after catalogue/help is offered."
-      ]
-    },
-    {
-      "id": "REQ-6",
-      "text": "Ensure curated gift categories are highlighted as selectable cards within the guided flow (and/or as an optional exploration step) to support both bulk and single orders without showing pricing, delivery promises, or vendor details.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-1"
-        ],
-        "quotes": [
-          "The site must support both bulk and single orders, highlight curated gift categories... Do not show pricing, delivery promises, or vendor details."
-        ]
-      },
-      "acceptanceCriteria": [
-        "Categories render as card-based selectable UI using existing category data (frontend/src/config/pegasus.ts) or an updated curated set.",
-        "No UI text includes pricing, “typical price ranges”, delivery timelines/promises, or vendor/supplier details.",
-        "Any existing copy that implies pricing or delivery promises is removed/rewritten to comply (including the current catalogue section wording and the delivery-focused “How It Works” step text)."
-      ]
-    },
-    {
-      "id": "REQ-7",
-      "text": "Update WhatsApp handoff UX and copy so it feels natural and intentional: label it as “Speak to our team” (not a salesy push), include clear but non-pushy CTAs, and prefill the WhatsApp message with the user’s selected path answers (intent + quantity/purpose + category if chosen).",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-1"
-        ],
-        "quotes": [
-          "WhatsApp transfer should feel natural and intentional, never forced, and always positioned as “Speak to our team” rather than a sales pitch.",
-          "...offer a WhatsApp handoff only after interest is gauged."
-        ]
-      },
-      "acceptanceCriteria": [
-        "All WhatsApp CTAs use “Speak to our team” (or close equivalent) instead of “Chat With Us” / “Chat on WhatsApp”.",
-        "The WhatsApp deep link message includes the key selections the user made in the guided flow.",
-        "Catalogue remains available as a separate, non-pushy option where appropriate."
+        "A new image file exists at frontend/public/assets/generated/category-combo-gift-sets.dim_800x600.png.",
+        "On the homepage, in the Curated Gift Categories grid, the “Combo Gift Sets” card renders the new image (loaded via the existing getCategoryImagePath('combo-gift-sets') => /assets/generated/category-combo-gift-sets.dim_800x600.png).",
+        "The SafeImage fallback UI (fallback container and its SVG icon) is not shown for the “Combo Gift Sets” card when the new asset is present.",
+        "No other category cards or sections are modified beyond the selected elements’ scope."
       ]
     }
   ],
   "constraints": [
-    "Do not display pricing information anywhere (including “typical price ranges”).",
-    "Do not include delivery promises or timelines.",
-    "Do not include vendor/supplier details.",
-    "Do not edit files under frontend/src/components/ui or any paths listed as immutable in SYSTEM_CONTEXT."
+    "Do not edit files under frontend/src/components/ui (read-only).",
+    "Backend remains single-actor; no backend changes are required for static image assets.",
+    "Apply changes only to the selected elements in the Curated Gift Categories card image/fallback area (as identified by the provided XPaths)."
   ],
   "nonGoals": [
-    "Implementing payments or checkout.",
-    "Adding third-party authentication beyond existing Internet Identity scaffolding.",
-    "Building a real-time chat system (WebSockets).",
-    "Creating an admin dashboard or product database."
+    "Creating or changing additional category images beyond Combo Gift Sets.",
+    "Changing category names/descriptions, adding new categories, or altering homepage layout beyond what is necessary to show the Combo Gift Sets image."
   ],
   "imageRequirements": {
     "required": [
-      "Red Pegasus logo mark on transparent background (pegasus-logo-red.dim_512x512.png)",
-      "Red Pegasus favicon icon on transparent background (pegasus-favicon-red.dim_64x64.png)"
+      "Clean category image showing curated combo gift sets (gift hamper/assortment) on a neutral background (category-combo-gift-sets.dim_800x600.png)"
     ],
     "edits": []
   }
